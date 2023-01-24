@@ -13,27 +13,63 @@
 .logo {
   height: 50px;
   width: 280px;
+  cursor: pointer;
+}
+.rightContainer {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
 }
 .banner {
-  width: 400px;
+  width: 200px;
   height: 50px;
-  background-color: #e8c547;
-  border-radius: 8px;
+  background-color: #cdd1c4;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.bannerInside {
+  overflow: hidden;
+  position: absolute;
+  width: 300%;
+  top: 50%;
+  left: 00%;
+  transform: translate(0%, -50%);
+  overflow: hidden;
+  animation: slider 10s infinite;
 }
 .bannerText {
   color: #4d5061;
-  animation-name: banner;
-  animation-duration: 5s;
-  animation-iteration-count: infinite;
+  position: relative;
+  width: 33.33333333%;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
-@keyframes banner {
-  from {
-    transform: translateX(-150%);
+@keyframes slider {
+  0%,
+  25%,
+  100% {
+    left: 0;
   }
-  to {
-    transform: translateX(150%);
+
+  30%,
+  55% {
+    left: -100%;
   }
+
+  60%,
+  85% {
+    left: -200%;
+  }
+}
+.formButton {
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
 }
