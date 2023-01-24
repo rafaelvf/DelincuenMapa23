@@ -14,3 +14,26 @@
   height: 50px;
   width: 280px;
 }
+.banner {
+  width: 400px;
+  height: 50px;
+  background-color: #e8c547;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bannerText {
+  color: #4d5061;
+  animation-name: banner;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+@keyframes banner {
+  from {
+    transform: translateX(-150%);
+  }
+  to {
+    transform: translateX(150%);
+  }
+}
