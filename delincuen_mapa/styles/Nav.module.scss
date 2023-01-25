@@ -1,5 +1,5 @@
 .container {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -9,6 +9,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
+  margin-left: -8px;
+  margin-top: -8px;
 }
 .logo {
   height: 50px;
