@@ -4,14 +4,6 @@ import styles from "../styles/Nav.module.scss";
 const dataCrimenes = ["5 Crimenes Registrados", "3 Muertes", "4 Desaparecidos"];
 
 const Nav = () => {
-  //const [crimenes, setCrimenes] = useState();
-
-  //   dataCrimenes.map((i: any) => {
-  //     setTimeout(() => {
-  //       setCrimenes(i);
-  //     }, 1000);
-  //   });
-
   return (
     <div className={styles.container}>
       <img src="/logod.png" className={styles.logo} />
