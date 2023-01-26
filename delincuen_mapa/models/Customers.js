@@ -32,4 +32,4 @@ const ProductSchema = new mongoose.Schema(
 );
 
 export default mongoose.models.Customers ||
-  mongoose.model("Customers", ProductSchema);
+  mongoose.model("Customers", ProductSchema); //las C en customers tiene que ser o mayus o no
