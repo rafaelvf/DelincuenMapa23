@@ -9,6 +9,7 @@
     "leaflet": "^1.9.3",
     "leaflet-defaulticon-compatibility": "^0.1.1",
     "mongodb": "^4.8.1",
+    "mongoose": "^6.9.0",
     "next": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

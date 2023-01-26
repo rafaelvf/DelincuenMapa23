@@ -5,15 +5,26 @@ type Props = {
   fecha: string;
   descripcion: string;
   tipo: string;
+  logo: string;
 };
 
-export default function Tweets({ ciudad, fecha, descripcion, tipo }: Props) {
+export default function Tweets({
+  ciudad,
+  fecha,
+  descripcion,
+  tipo,
+  logo,
+}: Props) {
   return (
     <div className={styles.container}>
-      <div className={styles.ciudad}>{ciudad}</div>
-      <div className={styles.tipo}>{tipo}</div>
-      <div className={styles.descripcion}>{descripcion}</div>
-      <div className={styles.fecha}>{fecha}</div>
+      <img src={logo} className={styles.img} />
+
+      <div className={styles.text}>
+        <div className={styles.ciudad}>{ciudad}</div>
+        <div className={styles.tipo}>{tipo}</div>
+        <div className={styles.descripcion}>{descripcion}</div>
+        <div className={styles.fecha}>{fecha}</div>
+      </div>
     </div>
   );
 }
