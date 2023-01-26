@@ -63,7 +63,7 @@ const MapForm = (props: any) => {
     lat: 51.505,
     lng: -0.09,
   };
-
+  console.log(state, "d");
   function DraggableMarker() {
     const [draggable, setDraggable] = useState(true);
 
@@ -114,12 +114,12 @@ const MapForm = (props: any) => {
   console.log(state.currentLocation, "curren");
 
   return (
-    <div className="mapaform">
+    <div className={styles.container}>
       <MapContainer
         center={state.currentLocation}
-        zoom={10}
+        zoom={18}
         scrollWheelZoom={true}
-        style={{ height: "30vh", width: "100wh" }}
+        style={{ height: "92vh", width: "100wh" }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

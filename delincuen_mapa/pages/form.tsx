@@ -1,6 +1,5 @@
 import Head from "next/head";
-import clientPromise from "../lib/mongodb";
-import { InferGetServerSidePropsType } from "next";
+import React from "react";
 import Nav from "../components/Nav";
 import MapForm from "../components/MapForm";
 import dynamic from "next/dynamic";
@@ -11,9 +10,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { update } from "../redux/userSlice";
 
 export default function Form() {
-  const MapForm = dynamic(
-    () => import("../components/MapForm"), // replace '@components/map' with your component's location
-    { ssr: false } // This line is important. It's what prevents server-side render
+  const [coord, setCoord] = useState({});
+  const MapForm = React.useMemo(
+    () =>
+      dynamic(() => import("../components/MapForm"), {
+        loading: () => <p>A map is loading</p>,
+        ssr: false, // This line is important. It's what prevents server-side render
+      }),
+    [
+      /* list variables which should trigger a re-render here */
+    ]
   );
 
   //@ts-ignore
@@ -23,7 +29,6 @@ export default function Form() {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [coord, setCoord] = useState({});
 
   const dispatch = useDispatch();
 
@@ -33,10 +38,10 @@ export default function Form() {
     dispatch(update({ name, email }));
   }
 
-  console.log(name, "name");
-  console.log(email, "email");
-  console.log(name2, "name2");
-  console.log(email2, "email2");
+  // console.log(name, "name");
+  // console.log(email, "email");
+  // console.log(name2, "name2");
+  // console.log(email2, "email2");
 
   const pull_data = (data: any) => {
     console.log(data, "kkk");
