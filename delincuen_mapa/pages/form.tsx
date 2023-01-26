@@ -2,7 +2,7 @@ import Head from "next/head";
 import clientPromise from "../lib/mongodb";
 import { InferGetServerSidePropsType } from "next";
 import Nav from "../components/Nav";
-import Map from "../components/Map";
+import MapForm from "../components/MapForm";
 import dynamic from "next/dynamic";
 import styles from "../styles/Form.module.scss";
 import Board from "../components/Board";
@@ -11,8 +11,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { update } from "../redux/userSlice";
 
 export default function Form() {
-  const Map = dynamic(
-    () => import("../components/Map"), // replace '@components/map' with your component's location
+  const MapForm = dynamic(
+    () => import("../components/MapForm"), // replace '@components/map' with your component's location
     { ssr: false } // This line is important. It's what prevents server-side render
   );
 
@@ -23,6 +23,7 @@ export default function Form() {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [coord, setCoord] = useState({});
 
   const dispatch = useDispatch();
 
@@ -37,6 +38,11 @@ export default function Form() {
   console.log(name2, "name2");
   console.log(email2, "email2");
 
+  const pull_data = (data: any) => {
+    console.log(data, "kkk");
+    setCoord(data);
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -48,7 +54,7 @@ export default function Form() {
         <Nav />
         <div className={styles.subContainer}>
           <div style={{ width: "50%" }}>
-            <Map />
+            <MapForm func={pull_data} />
           </div>
           <div style={{ width: "50%" }}>
             <form>

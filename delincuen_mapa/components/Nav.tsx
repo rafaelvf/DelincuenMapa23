@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/Nav.module.scss";
 
@@ -17,7 +18,10 @@ const Nav = () => {
             ))}
           </div>
         </div>
-        <img src="/form-svgrepo-com.svg" className={styles.formButton}></img>
+        <Link href={"/form"}>
+          {" "}
+          <img src="/form-svgrepo-com.svg" className={styles.formButton}></img>
+        </Link>
       </div>
     </div>
   );
