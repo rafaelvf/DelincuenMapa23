@@ -11,6 +11,15 @@ const categorias = [
   "Otros",
 ];
 
+const metodo = [
+  "Caminando por la calle",
+  "En mi auto",
+  "En transporte público",
+  "En un lugar público",
+  "Entraron a mi hogar",
+  "Otros",
+];
+
 const FormSub = () => {
   //@ts-ignore
   const formik = useFormik({
@@ -56,6 +65,30 @@ const FormSub = () => {
             name="valor"
             type="integer"
             value={formik.values.valor}
+            onChange={formik.handleChange}
+          />
+        </div>
+        <div>
+          <label>Tipo de crimen</label>
+          {metodo.map((i: any) => (
+            <div>
+              <input
+                id="tipo"
+                name="tipo"
+                type="checkbox"
+                value={i}
+                onChange={formik.handleChange}
+              />
+              <label>{i}</label>
+            </div>
+          ))}
+        </div>
+        <div>
+          <label>Detalles</label>
+          <input
+            name="descripcion"
+            type="text"
+            value={formik.values.descripcion}
             onChange={formik.handleChange}
           />
         </div>
