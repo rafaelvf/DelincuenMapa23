@@ -8,6 +8,7 @@ import Board from "../components/Board";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { update } from "../redux/userSlice";
+import FormSub from "../components/FormSub";
 
 export default function Form() {
   const [coord, setCoord] = useState({});
@@ -62,7 +63,7 @@ export default function Form() {
             <MapForm func={pull_data} />
           </div>
           <div style={{ width: "50%" }}>
-            <form>
+            {/* <form>
               <input
                 type="text"
                 name="name"
@@ -74,7 +75,8 @@ export default function Form() {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <button onClick={handleChange}>update</button>
-            </form>
+            </form> */}
+            <FormSub />
           </div>
         </div>
       </main>

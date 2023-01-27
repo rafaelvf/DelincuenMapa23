@@ -63,7 +63,7 @@ const MapForm = (props: any) => {
     lat: 51.505,
     lng: -0.09,
   };
-  console.log(state, "d");
+
   function DraggableMarker() {
     const [draggable, setDraggable] = useState(true);
 
@@ -96,28 +96,20 @@ const MapForm = (props: any) => {
         draggable={draggable}
         eventHandlers={eventHandlers}
         ref={markerRef}
-        icon={
-          new Icon({
-            iconUrl: markerIconPng,
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-          })
-        }
       >
         <Popup minWidth={90}>
-          <p>Lat:latlng</p>
+          <p>Lat:{coordenadas.lat}</p>
+          <p>Lng:{coordenadas.lng}</p>
         </Popup>
       </Marker>
     ) : null;
   }
 
-  console.log(state.currentLocation, "curren");
-
   return (
     <div className={styles.container}>
       <MapContainer
         center={state.currentLocation}
-        zoom={18}
+        zoom={12}
         scrollWheelZoom={true}
         style={{ height: "92vh", width: "100wh" }}
       >
