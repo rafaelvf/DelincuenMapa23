@@ -35,17 +35,18 @@ const FormSub = () => {
   return (
     <div className={styles.container}>
       <form>
-        <div>
-          <label>Fecha y hora</label>
+        <div className={styles.labelContainer}>
+          <label className={styles.title}>Fecha y hora</label>
           <input
             name="fecha"
             type="datetime-local"
             value={formik.values.fecha}
             onChange={formik.handleChange}
+            className={styles.input}
           />
         </div>
-        <div>
-          <label>Selecciona qué te robaron</label>
+        <div className={styles.labelContainer}>
+          <label className={styles.title}>Selecciona qué te robaron</label>
           {categorias.map((i: any) => (
             <div>
               <input
@@ -59,17 +60,18 @@ const FormSub = () => {
             </div>
           ))}
         </div>
-        <div>
-          <label>Valor aproximado de tu perdida</label>
+        <div className={styles.labelContainer}>
+          <label className={styles.title}>Valor aproximado de tu perdida</label>
           <input
             name="valor"
             type="integer"
             value={formik.values.valor}
             onChange={formik.handleChange}
+            className={styles.input}
           />
         </div>
-        <div>
-          <label>Tipo de crimen</label>
+        <div className={styles.labelContainer}>
+          <label className={styles.title}>Tipo de crimen</label>
           {metodo.map((i: any) => (
             <div>
               <input
@@ -83,13 +85,14 @@ const FormSub = () => {
             </div>
           ))}
         </div>
-        <div>
-          <label>Detalles</label>
+        <div className={styles.labelContainer}>
+          <label className={styles.title}>Detalles</label>
           <input
             name="descripcion"
             type="text"
             value={formik.values.descripcion}
             onChange={formik.handleChange}
+            className={styles.input3}
           />
         </div>
       </form>
