@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/FormSub.module.scss";
 import { useFormik } from "formik";
+import { Country, State, City } from "country-state-city";
 
 const categorias = [
   "Billetera",
@@ -12,11 +13,11 @@ const categorias = [
 ];
 
 const metodo = [
-  "Caminando por la calle",
-  "En mi auto",
-  "En transporte público",
-  "En un lugar público",
-  "Entraron a mi hogar",
+  "Asalto a transeúntes",
+  "Robo de bienes y artículos menores",
+  "Robo de vehículos",
+  "Robo a casas habitación",
+  "Violencia",
   "Otros",
 ];
 
@@ -24,6 +25,7 @@ const FormSub = () => {
   //@ts-ignore
   const formik = useFormik({
     initialValues: {
+      ciudad: "",
       fecha: "",
       articulo: [],
       valor: 0,
@@ -32,11 +34,25 @@ const FormSub = () => {
     },
   });
   console.log(formik.values);
+  console.log(City, "city");
+  console.log(City.getAllCities()[0]);
+  console.log(Country.getAllCountries());
   return (
     <div className={styles.container}>
-      <form>
+      <form className={styles.formContainer}>
         <div className={styles.labelContainer}>
-          <label className={styles.title}>Fecha y hora</label>
+          <label className={styles.title}>Ciudad</label>
+          <select
+            name="ciudad"
+            value={formik.values.ciudad}
+            onChange={formik.handleChange}
+            className={styles.input}
+          >
+            <option>USA</option>
+          </select>
+        </div>
+        <div className={styles.labelContainer}>
+          <label className={styles.title}>Fecha & Hora</label>
           <input
             name="fecha"
             type="datetime-local"
@@ -44,6 +60,22 @@ const FormSub = () => {
             onChange={formik.handleChange}
             className={styles.input}
           />
+        </div>
+        <div className={styles.labelContainer}>
+          <label className={styles.title}>Delito</label>
+          {metodo.map((i: any) => (
+            <div>
+              <input
+                id="tipo"
+                name="tipo"
+                type="checkbox"
+                value={i}
+                onChange={formik.handleChange}
+                className={styles.input2}
+              />
+              <label>{i}</label>
+            </div>
+          ))}
         </div>
         <div className={styles.labelContainer}>
           <label className={styles.title}>Selecciona qué te robaron</label>
@@ -55,6 +87,7 @@ const FormSub = () => {
                 type="checkbox"
                 value={i}
                 onChange={formik.handleChange}
+                className={styles.input2}
               />
               <label>{i}</label>
             </div>
@@ -70,26 +103,11 @@ const FormSub = () => {
             className={styles.input}
           />
         </div>
-        <div className={styles.labelContainer}>
-          <label className={styles.title}>Tipo de crimen</label>
-          {metodo.map((i: any) => (
-            <div>
-              <input
-                id="tipo"
-                name="tipo"
-                type="checkbox"
-                value={i}
-                onChange={formik.handleChange}
-              />
-              <label>{i}</label>
-            </div>
-          ))}
-        </div>
+
         <div className={styles.labelContainer}>
           <label className={styles.title}>Detalles</label>
-          <input
+          <textarea
             name="descripcion"
-            type="text"
             value={formik.values.descripcion}
             onChange={formik.handleChange}
             className={styles.input3}
