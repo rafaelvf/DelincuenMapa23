@@ -28,7 +28,7 @@ const FormSub = () => {
       ciudad: "",
       fecha: "",
       articulo: [],
-      valor: 0,
+      valor: "",
       tipo: [],
       descripcion: "",
     },
@@ -122,13 +122,15 @@ const FormSub = () => {
         </div>
         <div className={styles.labelContainer}>
           <label className={styles.title}>Valor de la perdida</label>
-          <input
-            name="valor"
-            type="integer"
-            value={formik.values.valor}
-            onChange={formik.handleChange}
-            className={styles.input}
-          />
+          <div className={styles.sign}>
+            <input
+              name="valor"
+              type="number"
+              value={formik.values.valor}
+              onChange={formik.handleChange}
+              className={styles.input}
+            />
+          </div>
         </div>
 
         <div className={styles.labelContainer}>
