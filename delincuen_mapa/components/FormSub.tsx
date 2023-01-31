@@ -34,9 +34,15 @@ const FormSub = () => {
     },
   });
   console.log(formik.values);
-  console.log(City, "city");
-  console.log(City.getAllCities()[0]);
-  console.log(Country.getAllCountries());
+  //console.log(City, "city");
+  console.log(City.getAllCities(), "allcities");
+  //console.log(Country.getAllCountries());
+
+  const allCities = City.getAllCities();
+  let EcCities = allCities.filter((i: any) => {
+    return i.countryCode === "EC";
+  });
+  console.log(EcCities, "electrónicos");
   return (
     <div className={styles.container}>
       <form className={styles.formContainer}>
@@ -48,7 +54,9 @@ const FormSub = () => {
             onChange={formik.handleChange}
             className={styles.input}
           >
-            <option>USA</option>
+            {EcCities.map((i: any, key: any) => (
+              <option>{i.name}</option>
+            ))}
           </select>
         </div>
         <div className={styles.labelContainer}>
