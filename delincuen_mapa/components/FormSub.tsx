@@ -34,19 +34,18 @@ const FormSub = () => {
     },
   });
   console.log(formik.values);
-  //console.log(City, "city");
-  console.log(City.getAllCities(), "allcities");
-  //console.log(Country.getAllCountries());
 
-  const allCities = City.getAllCities();
-  let EcCities = allCities.filter((i: any) => {
-    return i.countryCode === "EC";
-  });
-  console.log(EcCities, "electrónicos");
+  // console.log(City.getAllCities(), "allcities");
+
+  // const allCities = City.getAllCities();
+  // let EcCities = allCities.filter((i: any) => {
+  //   return i.countryCode === "EC";
+  // });
+
   return (
     <div className={styles.container}>
       <form className={styles.formContainer}>
-        <div className={styles.labelContainer}>
+        {/* <div className={styles.labelContainer}>
           <label className={styles.title}>Ciudad</label>
           <select
             name="ciudad"
@@ -55,10 +54,10 @@ const FormSub = () => {
             className={styles.input}
           >
             {EcCities.map((i: any, key: any) => (
-              <option>{i.name}</option>
+              <option key={key}>{i.name}</option>
             ))}
           </select>
-        </div>
+        </div> */}
         <div className={styles.labelContainer}>
           <label className={styles.title}>Fecha & Hora</label>
           <input
@@ -71,8 +70,26 @@ const FormSub = () => {
         </div>
         <div className={styles.labelContainer}>
           <label className={styles.title}>Delito</label>
-          {metodo.map((i: any) => (
-            <div>
+          <div className={styles.grid}>
+            {metodo.map((i: any, key: any) => (
+              <label key={key}>
+                <input
+                  id="tipo"
+                  name="tipo"
+                  type="checkbox"
+                  value={i}
+                  onChange={formik.handleChange}
+                  className={styles.input22}
+                />
+                <span className={styles.checkSpan}>{i}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+        {/* <div className={styles.labelContainer}>
+          <label className={styles.title}>Delito</label>
+          {metodo.map((i: any, key: any) => (
+            <div key={key}>
               <input
                 id="tipo"
                 name="tipo"
@@ -84,25 +101,27 @@ const FormSub = () => {
               <label>{i}</label>
             </div>
           ))}
-        </div>
+        </div> */}
         <div className={styles.labelContainer}>
           <label className={styles.title}>Selecciona qué te robaron</label>
-          {categorias.map((i: any) => (
-            <div>
-              <input
-                id="articulo"
-                name="articulo"
-                type="checkbox"
-                value={i}
-                onChange={formik.handleChange}
-                className={styles.input2}
-              />
-              <label>{i}</label>
-            </div>
-          ))}
+          <div>
+            {categorias.map((i: any, key: any) => (
+              <label key={key}>
+                <input
+                  id="articulo"
+                  name="articulo"
+                  type="checkbox"
+                  value={i}
+                  onChange={formik.handleChange}
+                  className={styles.input22}
+                />
+                <span className={styles.checkSpan}>{i}</span>
+              </label>
+            ))}
+          </div>
         </div>
         <div className={styles.labelContainer}>
-          <label className={styles.title}>Valor aproximado de tu perdida</label>
+          <label className={styles.title}>Valor de la perdida</label>
           <input
             name="valor"
             type="integer"
@@ -120,6 +139,11 @@ const FormSub = () => {
             onChange={formik.handleChange}
             className={styles.input3}
           />
+        </div>
+        <div>
+          <button type="submit" className={styles.button}>
+            Registrar{" "}
+          </button>
         </div>
       </form>
     </div>
