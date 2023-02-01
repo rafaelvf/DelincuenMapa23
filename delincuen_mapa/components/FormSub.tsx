@@ -107,9 +107,7 @@ const FormSub = ({ coord }: any) => {
         </div>
 
         <div className={styles.labelContainer}>
-          <label className={styles.title2}>
-            Selecciona qué te robaron<sup className={styles.sup}>*</sup>
-          </label>
+          <label className={styles.title2}>Selecciona qué te robaron</label>
           <div>
             {categorias.map((i: any, key: any) => (
               <label key={key}>
@@ -126,11 +124,6 @@ const FormSub = ({ coord }: any) => {
               </label>
             ))}
           </div>
-          {formik.errors.articulo && validate && (
-            <span className={styles.errorMessage2}>
-              {formik.errors.articulo}
-            </span>
-          )}
         </div>
         <div className={styles.labelContainer}>
           <label className={styles.title2}>Valor de la perdida</label>
