@@ -103,7 +103,7 @@ const FormSub = () => {
           ))}
         </div> */}
         <div className={styles.labelContainer}>
-          <label className={styles.title}>Selecciona qué te robaron</label>
+          <label className={styles.title2}>Selecciona qué te robaron</label>
           <div>
             {categorias.map((i: any, key: any) => (
               <label key={key}>
@@ -121,7 +121,7 @@ const FormSub = () => {
           </div>
         </div>
         <div className={styles.labelContainer}>
-          <label className={styles.title}>Valor de la perdida</label>
+          <label className={styles.title2}>Valor de la perdida</label>
           <div className={styles.sign}>
             <input
               name="valor"
@@ -130,6 +130,7 @@ const FormSub = () => {
               onChange={formik.handleChange}
               className={styles.input}
             />
+            <span className={styles.dollar}>$</span>
           </div>
         </div>
 

@@ -1,5 +1,4 @@
 .container {
-  //border: 1px solid red;
   width: 100%;
   height: 100%;
   overflow-y: scroll;
@@ -21,12 +20,19 @@
   font-weight: 700;
   margin-bottom: 14px;
 }
-.input {
+.title2 {
+  font-size: 20px;
+  font-weight: 700;
   margin-bottom: 14px;
-  width: 250px;
+  margin-top: 10px;
+}
+.input {
+  margin-bottom: 20px;
+  width: 200px;
   border: 3px solid #4d5061;
   border-radius: 5px;
   padding: 5px 10px;
+  font-size: 14px;
 }
 
 .input22 {
@@ -45,6 +51,7 @@
   text-align: center;
   margin-bottom: 10px;
 }
+
 .input22:checked + span {
   background-color: #4d5061;
   color: white;
@@ -55,7 +62,9 @@
   height: 150px;
   border: 3px solid #4d5061;
   border-radius: 5px;
-  //padding: 5px 10px;
+  font-size: 14px;
+  padding-left: 10px;
+  padding-top: 10px;
 }
 .button {
   all: unset;
@@ -78,12 +87,12 @@
   height: 31px;
 }
 .sign {
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
-.sign:before {
-  content: "$";
-  position: absolute;
-  top: 0;
-  left: 10px;
-  z-index: 1;
+.dollar {
+  margin-bottom: 14px;
+  font-size: 20px;
+  font-weight: 550;
 }
