@@ -51,7 +51,9 @@
   text-align: center;
   margin-bottom: 10px;
 }
-
+.sup {
+  font-size: 12px;
+}
 .input22:checked + span {
   background-color: #4d5061;
   color: white;
@@ -95,4 +97,14 @@
   margin-bottom: 14px;
   font-size: 20px;
   font-weight: 550;
+}
+.errorMessage {
+  color: red;
+  font-size: 12px;
+  margin-top: -12px;
+}
+.errorMessage2 {
+  color: red;
+  font-size: 12px;
+  margin-top: -1px;
 }

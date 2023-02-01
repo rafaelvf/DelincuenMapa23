@@ -5,6 +5,7 @@ const ProductSchema = new mongoose.Schema(
     coordenadas: {
       type: Object,
       trim: true,
+      required: true,
     },
     fechaHora: {
       type: String,

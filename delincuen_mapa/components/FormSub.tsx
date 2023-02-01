@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/FormSub.module.scss";
 import { useFormik } from "formik";
-import { Country, State, City } from "country-state-city";
+import { basicSchema } from "../schemas/index";
+import axios from "axios";
 
 const categorias = [
   "Billetera",
@@ -21,55 +22,68 @@ const metodo = [
   "Otros",
 ];
 
-const FormSub = () => {
+const FormSub = ({ coord }: any) => {
+  const [validate, setValidate] = useState(false);
+  const onSubmit = (values: any, actions: any) => {
+    handleSubmit();
+  };
   //@ts-ignore
   const formik = useFormik({
     initialValues: {
-      ciudad: "",
       fecha: "",
       articulo: [],
-      valor: "",
+      valor: 0,
       tipo: [],
       descripcion: "",
     },
+    validationSchema: basicSchema,
+    onSubmit,
   });
-  console.log(formik.values);
+  const post = {
+    coordenadas: coord,
+    fechaHora: formik.values.fecha,
+    articulo: formik.values.articulo,
+    valor: formik.values.valor,
+    tipo: formik.values.tipo,
+    descripcion: formik.values.descripcion,
+  };
+  console.log(post, "post");
 
-  // console.log(City.getAllCities(), "allcities");
-
-  // const allCities = City.getAllCities();
-  // let EcCities = allCities.filter((i: any) => {
-  //   return i.countryCode === "EC";
-  // });
+  async function handleSubmit() {
+    //i.preventDefault();
+    if (coord.lat === 1 && coord.lng === 1) {
+      console.log("vali v");
+      alert("Por favor selccionar en el mapa");
+    } else {
+      let res = await axios.post(`http://localhost:3000/api/customer`, post);
+      alert("Se ha creado correctamente!");
+      console.log(res.data);
+    }
+  }
 
   return (
     <div className={styles.container}>
-      <form className={styles.formContainer}>
-        {/* <div className={styles.labelContainer}>
-          <label className={styles.title}>Ciudad</label>
-          <select
-            name="ciudad"
-            value={formik.values.ciudad}
-            onChange={formik.handleChange}
-            className={styles.input}
-          >
-            {EcCities.map((i: any, key: any) => (
-              <option key={key}>{i.name}</option>
-            ))}
-          </select>
-        </div> */}
+      <form onSubmit={formik.handleSubmit} className={styles.formContainer}>
         <div className={styles.labelContainer}>
-          <label className={styles.title}>Fecha & Hora</label>
+          <label className={styles.title}>
+            Fecha & Hora<sup className={styles.sup}>*</sup>
+          </label>
           <input
             name="fecha"
             type="datetime-local"
+            onBlur={formik.handleBlur}
             value={formik.values.fecha}
             onChange={formik.handleChange}
             className={styles.input}
           />
+          {formik.errors.fecha && formik.touched.fecha && (
+            <span className={styles.errorMessage}>{formik.errors.fecha}</span>
+          )}
         </div>
         <div className={styles.labelContainer}>
-          <label className={styles.title}>Delito</label>
+          <label className={styles.title}>
+            Delito<sup className={styles.sup}>*</sup>
+          </label>
           <div className={styles.grid}>
             {metodo.map((i: any, key: any) => (
               <label key={key}>
@@ -81,29 +95,21 @@ const FormSub = () => {
                   onChange={formik.handleChange}
                   className={styles.input22}
                 />
-                <span className={styles.checkSpan}>{i}</span>
+                <span onBlur={formik.handleBlur} className={styles.checkSpan}>
+                  {i}
+                </span>
               </label>
             ))}
           </div>
+          {formik.errors.tipo && validate && (
+            <span className={styles.errorMessage2}>{formik.errors.tipo}</span>
+          )}
         </div>
-        {/* <div className={styles.labelContainer}>
-          <label className={styles.title}>Delito</label>
-          {metodo.map((i: any, key: any) => (
-            <div key={key}>
-              <input
-                id="tipo"
-                name="tipo"
-                type="checkbox"
-                value={i}
-                onChange={formik.handleChange}
-                className={styles.input2}
-              />
-              <label>{i}</label>
-            </div>
-          ))}
-        </div> */}
+
         <div className={styles.labelContainer}>
-          <label className={styles.title2}>Selecciona qué te robaron</label>
+          <label className={styles.title2}>
+            Selecciona qué te robaron<sup className={styles.sup}>*</sup>
+          </label>
           <div>
             {categorias.map((i: any, key: any) => (
               <label key={key}>
@@ -112,6 +118,7 @@ const FormSub = () => {
                   name="articulo"
                   type="checkbox"
                   value={i}
+                  onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                   className={styles.input22}
                 />
@@ -119,6 +126,11 @@ const FormSub = () => {
               </label>
             ))}
           </div>
+          {formik.errors.articulo && validate && (
+            <span className={styles.errorMessage2}>
+              {formik.errors.articulo}
+            </span>
+          )}
         </div>
         <div className={styles.labelContainer}>
           <label className={styles.title2}>Valor de la perdida</label>
@@ -135,16 +147,29 @@ const FormSub = () => {
         </div>
 
         <div className={styles.labelContainer}>
-          <label className={styles.title}>Detalles</label>
+          <label className={styles.title}>
+            Detalles<sup className={styles.sup}>*</sup>
+          </label>
           <textarea
             name="descripcion"
+            onBlur={formik.handleBlur}
             value={formik.values.descripcion}
             onChange={formik.handleChange}
             className={styles.input3}
           />
         </div>
+        {formik.errors.descripcion && formik.touched.descripcion && (
+          <span className={styles.errorMessage2}>
+            {formik.errors.descripcion}
+          </span>
+        )}
         <div>
-          <button type="submit" className={styles.button}>
+          <button
+            //disabled={formik.isSubmitting}
+            type="submit"
+            onClick={() => setValidate(true)}
+            className={styles.button}
+          >
             Registrar{" "}
           </button>
         </div>

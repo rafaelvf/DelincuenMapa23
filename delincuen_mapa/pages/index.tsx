@@ -25,7 +25,7 @@ export default function Home({
   useEffect(() => {
     dispatch(updateRobos(customers));
   }, []);
-
+  console.log(customers, "customers");
   return (
     <div className={styles.container}>
       <Head>
@@ -40,7 +40,7 @@ export default function Home({
             <Map />
           </div>
           <div style={{ width: "50%" }}>
-            <Board />
+            <Board customers={customers} />
           </div>
         </div>
       </main>

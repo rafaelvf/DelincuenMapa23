@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React from "react";
+import React, { useEffect } from "react";
 import Nav from "../components/Nav";
 import MapForm from "../components/MapForm";
 import dynamic from "next/dynamic";
@@ -12,6 +12,7 @@ import FormSub from "../components/FormSub";
 
 export default function Form() {
   const [coord, setCoord] = useState({});
+
   const MapForm = React.useMemo(
     () =>
       dynamic(() => import("../components/MapForm"), {
@@ -45,7 +46,7 @@ export default function Form() {
   // console.log(email2, "email2");
 
   const pull_data = (data: any) => {
-    console.log(data, "kkk");
+    //console.log(data, "kkk");
     setCoord(data);
   };
 
@@ -63,20 +64,7 @@ export default function Form() {
             <MapForm func={pull_data} />
           </div>
           <div style={{ width: "50%" }}>
-            {/* <form>
-              <input
-                type="text"
-                name="name"
-                onChange={(e) => setName(e.target.value)}
-              />
-              <input
-                type="text"
-                name="email"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <button onClick={handleChange}>update</button>
-            </form> */}
-            <FormSub />
+            <FormSub coord={coord} />
           </div>
         </div>
       </main>

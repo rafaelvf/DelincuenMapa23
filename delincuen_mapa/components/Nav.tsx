@@ -7,7 +7,9 @@ const dataCrimenes = ["5 Crimenes Registrados", "3 Muertes", "4 Desaparecidos"];
 const Nav = () => {
   return (
     <div className={styles.container}>
-      <img src="/logod.png" className={styles.logo} />
+      <Link href={"/"}>
+        <img src="/logod.png" className={styles.logo} />
+      </Link>
       <div className={styles.rightContainer}>
         <div className={styles.banner}>
           <div className={styles.bannerInside}>
