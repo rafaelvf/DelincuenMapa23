@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  height: 90px;
+  min-height: 120px;
   border: 0.5px solid #cdd1c4;
   background-color: #ffffff;
   //border-radius: 8px;
@@ -26,8 +26,17 @@
 .infoContainer {
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 .commodity {
   width: 15px;
   height: 15px;
+}
+.bulletPoint {
+  width: 15px;
+  height: 15px;
+}
+.articuloContainer {
+  display: flex;
+  align-items: center;
 }

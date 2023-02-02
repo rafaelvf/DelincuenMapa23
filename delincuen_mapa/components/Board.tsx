@@ -14,6 +14,8 @@ export default function Board({ customers }: any) {
           fecha={i.fechaHora}
           descripcion={i.descripcion}
           tipo={i.tipo}
+          valor={i.valor}
+          articulo={i.articulo}
           key={key}
         />
       ))}

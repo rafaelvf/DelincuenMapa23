@@ -5,10 +5,18 @@ type Props = {
   fecha: string;
   descripcion: string;
   tipo: string;
+  valor?: number;
+  articulo?: [];
   //logo: string;
 };
-const images = ["/1.svg", "/2.svg", "/3.svg"];
-export default function Tweets({ fecha, descripcion, tipo }: Props) {
+
+export default function Tweets({
+  fecha,
+  descripcion,
+  tipo,
+  valor,
+  articulo,
+}: Props) {
   const [img, setImg] = useState("");
   function imgSelector(imgS: any) {
     if (imgS[0] === "Asalto a transeúntes") {
@@ -33,10 +41,9 @@ export default function Tweets({ fecha, descripcion, tipo }: Props) {
   useEffect(() => {
     imgSelector(tipo);
   }, [img]);
-  console.log(tipo[0], "kkk");
+  console.log(articulo, "kkk");
 
   const onlyDate = fecha.split("T");
-  console.log(onlyDate, "onlyDate");
 
   return (
     <div className={styles.container}>
@@ -57,6 +64,21 @@ export default function Tweets({ fecha, descripcion, tipo }: Props) {
           <img src="/time.svg" className={styles.commodity} />
           <div className={styles.fecha}>{onlyDate[1]}</div>
         </div>
+        <div className={styles.infoContainer}>
+          <img src="/dollar.svg" className={styles.commodity} />
+          <div className={styles.fecha}>{valor}</div>
+        </div>
+        {articulo && articulo.length > 0 && (
+          <div className={styles.infoContainer}>
+            <img src="/bullet.svg" className={styles.commodity} />
+            {articulo?.map((i: any, key: any) => (
+              <div className={styles.articuloContainer} key={key}>
+                <img src="/bulletPoint.svg" className={styles.bulletPoint} />
+                {i}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
