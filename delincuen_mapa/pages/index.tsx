@@ -7,9 +7,9 @@ import dynamic from "next/dynamic";
 import styles from "../styles/Home.module.scss";
 import Board from "../components/Board";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { updateRobos } from "../redux/userSlice";
-import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateRobos, updateRobosOriginal } from "../redux/userSlice";
+import { useEffect, useState } from "react";
 import { updateRobosAction } from "../redux/apiCalls";
 
 export default function Home({
@@ -19,13 +19,28 @@ export default function Home({
     () => import("../components/Map"), // replace '@components/map' with your component's location
     { ssr: false } // This line is important. It's what prevents server-side render
   );
-
+  const [ready, setReady] = useState(false);
   const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(updateRobos(customers));
+    updateRobosAction(dispatch);
+    setReady(true);
   }, []);
-  console.log(customers, "customers");
+
+  const customers2 = useSelector((state: any) => state.user.robosOriginal);
+  console.log(customers2, "customers");
+  useEffect(() => {
+    setTimeout(() => {
+      const filtrado = customers2.robosOriginal.filter(
+        (i: any) => i.valor === 0
+      );
+      console.log(filtrado, "filtrado");
+    }, 5000);
+  }, [ready]);
+
+  // useEffect(() => {
+  //   dispatch(updateRobos(filtrado));
+  //   dispatch(updateRobosOriginal(customers));
+  // }, []);
   return (
     <div className={styles.container}>
       <Head>

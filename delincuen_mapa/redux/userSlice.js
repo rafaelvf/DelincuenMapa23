@@ -7,6 +7,7 @@ export const userSlice = createSlice({
       name: "rafael",
       email: "re@gmail.com",
     },
+    robosOriginal: [],
     robos: {},
   },
   reducers: {
@@ -14,11 +15,14 @@ export const userSlice = createSlice({
       state.name = action.payload.name;
       state.email = action.payload.email;
     },
+    updateRobosOriginal: (state, action) => {
+      state.robosOriginal = action.payload;
+    },
     updateRobos: (state, action) => {
       state.robos = action.payload;
     },
   },
 });
 
-export const { update, updateRobos } = userSlice.actions; //aqui exportamos las acciones podemos tener varias.
+export const { update, updateRobos, updateRobosOriginal } = userSlice.actions; //aqui exportamos las acciones podemos tener varias.
 export default userSlice.reducer;
