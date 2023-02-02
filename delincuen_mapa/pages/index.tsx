@@ -35,9 +35,23 @@ export default function Home({
 
       <main>
         <Nav />
+        <div className={styles.filterContainer}>
+          <div className={styles.filter}>Delito</div>
+          <div className={styles.filter}>Artículos</div>
+          <div className={styles.filter}>
+            <div className={styles.filterAlignment}>
+              Día <img src="/sun.svg" className={styles.sun} />
+            </div>
+          </div>
+          <div className={styles.filter}>
+            <div className={styles.filterAlignment}>
+              Noche <div className={styles.moon}></div>
+            </div>
+          </div>
+        </div>
         <div className={styles.subContainer}>
           <div style={{ width: "50%" }}>
-            <Map />
+            <Map customers={customers} />
           </div>
           <div style={{ width: "50%" }}>
             <Board customers={customers} />

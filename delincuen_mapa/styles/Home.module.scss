@@ -8,3 +8,39 @@
   margin-right: -21px;
   display: flex;
 }
+.filterContainer {
+  background-color: #30323d;
+  padding: 1rem;
+  margin-left: -8px;
+  margin-right: -8px;
+  display: flex;
+  gap: 16px;
+}
+.filter {
+  border: 3px solid white;
+  color: white;
+  border-radius: 30px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.filter:hover {
+  border: 3px solid white;
+  color: #30323d;
+  background-color: white;
+}
+.filterAlignment {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.sun {
+  width: 15px;
+  height: 15px;
+}
+.moon {
+  background-image: url("/blueMoon.svg");
+  background-size: cover;
+  width: 18px;
+  height: 18px;
+}
