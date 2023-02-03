@@ -4,11 +4,12 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 export default function Board({ customers }: any) {
-  //const customers = useSelector((state: any) => state.user.robos);
+  const customersFiltered = useSelector((state: any) => state.user.robos);
+  const peopleArray = customersFiltered ? customersFiltered : customers;
 
   return (
     <div className={styles.container}>
-      {customers.map((i: any, key: any) => (
+      {peopleArray.map((i: any, key: any) => (
         <Tweets
           //ciudad={i.ciudad}
           fecha={i.fechaHora}

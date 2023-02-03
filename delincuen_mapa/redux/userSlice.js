@@ -1,4 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+export const updateCustomers = createAsyncThunk("updateCustomers", async () => {
+  const res = await axios.get("http://localhost:3000/api/customer");
+  return res.data;
+});
 
 export const userSlice = createSlice({
   name: "user",
@@ -8,7 +14,7 @@ export const userSlice = createSlice({
       email: "re@gmail.com",
     },
     robosOriginal: [],
-    robos: {},
+    robos: [],
   },
   reducers: {
     update: (state, action) => {
@@ -19,7 +25,23 @@ export const userSlice = createSlice({
       state.robosOriginal = action.payload;
     },
     updateRobos: (state, action) => {
+      console.log(action.payload, "actionpayload");
       state.robos = action.payload;
+    },
+  },
+  extraReducers: {
+    [updateCustomers.pending]: (state) => {
+      state.pending = true;
+      state.error = false;
+    },
+    [updateCustomers.fulfilled]: (state, action) => {
+      state.pending = false;
+      state.robosOriginal = action.payload;
+      //state.robos = action.payload;
+    },
+    [updateCustomers.pending]: (state) => {
+      state.pending = null;
+      state.error = true;
     },
   },
 });

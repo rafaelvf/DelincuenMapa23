@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateRobos, updateRobosOriginal } from "../redux/userSlice";
 import { useEffect, useState } from "react";
 import { updateRobosAction } from "../redux/apiCalls";
+import { updateCustomers } from "../redux/userSlice";
+import { metodo, categorias } from "../data";
 
 export default function Home({
   customers,
@@ -19,28 +21,36 @@ export default function Home({
     () => import("../components/Map"), // replace '@components/map' with your component's location
     { ssr: false } // This line is important. It's what prevents server-side render
   );
-  const [ready, setReady] = useState(false);
+
+  const [tipo, setTipo] = useState("");
+  const [customersFiltrados, setCustomersFiltrados] = useState();
   const dispatch = useDispatch();
   useEffect(() => {
-    updateRobosAction(dispatch);
-    setReady(true);
+    //@ts-ignore
+    dispatch(updateCustomers());
   }, []);
 
   const customers2 = useSelector((state: any) => state.user.robosOriginal);
-  console.log(customers2, "customers");
-  useEffect(() => {
-    setTimeout(() => {
-      const filtrado = customers2.robosOriginal.filter(
-        (i: any) => i.valor === 0
-      );
-      console.log(filtrado, "filtrado");
-    }, 5000);
-  }, [ready]);
+  console.log(customers2, "customers2");
 
-  // useEffect(() => {
-  //   dispatch(updateRobos(filtrado));
-  //   dispatch(updateRobosOriginal(customers));
-  // }, []);
+  function filtrado(filtro: string) {
+    console.log(filtro, "filtor");
+    const customersFiltrados = [];
+    for (let i = 0; i < customers2.length; i++) {
+      for (let j = 0; j < customers2[i].tipo.length; j++) {
+        if (filtro === customers2[i].tipo[j]) {
+          customersFiltrados.push(customers2[i]);
+        }
+      }
+    }
+
+    console.log(customersFiltrados);
+    setCustomersFiltrados(customersFiltrados);
+  }
+  console.log(customersFiltrados, "customersFiltrados");
+  useEffect(() => {
+    dispatch(updateRobos(customersFiltrados));
+  });
   return (
     <div className={styles.container}>
       <Head>
@@ -51,18 +61,57 @@ export default function Home({
       <main>
         <Nav />
         <div className={styles.filterContainer}>
-          <div className={styles.filter}>Delito</div>
-          <div className={styles.filter}>Artículos</div>
-          <div className={styles.filter}>
-            <div className={styles.filterAlignment}>
-              Día <img src="/sun.svg" className={styles.sun} />
+          {tipo !== "" && (
+            <div className={styles.filterBorrar} onClick={() => setTipo("")}>
+              Borrar Filtros
             </div>
-          </div>
-          <div className={styles.filter}>
-            <div className={styles.filterAlignment}>
-              Noche <div className={styles.moon}></div>
+          )}
+          {(tipo === "" || tipo === "Delito") && (
+            <div className={styles.filter} onClick={() => setTipo("Delito")}>
+              Delito
             </div>
-          </div>
+          )}
+          {(tipo === "" || tipo === "Articulos") && (
+            <div className={styles.filter} onClick={() => setTipo("Articulos")}>
+              Artículos
+            </div>
+          )}
+          {(tipo === "" || tipo === "Dia") && (
+            <div className={styles.filter} onClick={() => setTipo("Dia")}>
+              <div className={styles.filterAlignment}>
+                Día <img src="/sun.svg" className={styles.sun} />
+              </div>
+            </div>
+          )}
+          {(tipo === "" || tipo === "Noche") && (
+            <div className={styles.filter} onClick={() => setTipo("Noche")}>
+              <div className={styles.filterAlignment}>
+                Noche <div className={styles.moon}></div>
+              </div>
+            </div>
+          )}
+          {tipo === "Delito" && (
+            <>
+              {metodo.map((i: any, key: any) => (
+                <div
+                  className={styles.filter}
+                  key={key}
+                  onClick={() => filtrado(i)}
+                >
+                  {i}
+                </div>
+              ))}
+            </>
+          )}
+          {tipo === "Articulos" && (
+            <>
+              {categorias.map((i: any, key: any) => (
+                <div className={styles.filter} key={key}>
+                  {i}
+                </div>
+              ))}
+            </>
+          )}
         </div>
         <div className={styles.subContainer}>
           <div style={{ width: "50%" }}>

@@ -3,24 +3,7 @@ import styles from "../styles/FormSub.module.scss";
 import { useFormik } from "formik";
 import { basicSchema } from "../schemas/index";
 import axios from "axios";
-
-const categorias = [
-  "Billetera",
-  "Carro",
-  "Casa",
-  "Dispositivos electrónicos",
-  "Joyas",
-  "Otros",
-];
-
-const metodo = [
-  "Asalto a transeúntes",
-  "Robo de bienes y artículos menores",
-  "Robo de vehículos",
-  "Robo a casas habitación",
-  "Violencia",
-  "Otros",
-];
+import { metodo, categorias } from "../data";
 
 const FormSub = ({ coord }: any) => {
   const [validate, setValidate] = useState(false);

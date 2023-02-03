@@ -20,19 +20,19 @@ export default function Tweets({
   const [img, setImg] = useState("");
   function imgSelector(imgS: any) {
     if (imgS[0] === "Asalto a transeúntes") {
-      console.log(imgS, "imgS");
+      //console.log(imgS, "imgS");
       setImg("/3.svg");
     } else if (imgS[0] === "Robo de bienes y artículos menores") {
-      console.log(imgS, "imgS");
+      //console.log(imgS, "imgS");
       setImg("/5.svg");
     } else if (imgS[0] === "Robo de vehículos") {
-      console.log(imgS, "imgS");
+      //console.log(imgS, "imgS");
       setImg("/7.svg");
     } else if (imgS[0] === "Robo a casas habitación") {
-      console.log(imgS, "imgS");
+      //console.log(imgS, "imgS");
       setImg("/6.svg");
     } else if (imgS[0] === "Violencia") {
-      console.log(imgS, "imgS");
+      //console.log(imgS, "imgS");
       setImg("/2.svg");
     } else {
       setImg("/1.svg");
@@ -41,7 +41,7 @@ export default function Tweets({
   useEffect(() => {
     imgSelector(tipo);
   }, [img]);
-  console.log(articulo, "kkk");
+  //console.log(articulo, "kkk");
 
   const onlyDate = fecha.split("T");
 
