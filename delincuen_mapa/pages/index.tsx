@@ -8,9 +8,9 @@ import styles from "../styles/Home.module.scss";
 import Board from "../components/Board";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { updateRobos, clearFilter } from "../redux/userSlice";
+import { updateRobos, clearFilter, filterArticulos } from "../redux/userSlice";
 import { useEffect, useState } from "react";
-import { updateRobosAction } from "../redux/apiCalls";
+
 import { updateCustomers } from "../redux/userSlice";
 import { metodo, categorias } from "../data";
 
@@ -31,10 +31,8 @@ export default function Home({
   }, []);
 
   const customers2 = useSelector((state: any) => state.user.robosOriginal);
-  console.log(customers2, "customers2");
 
   function filtrado(filtro: string) {
-    console.log(filtro, "filtor");
     const customersFiltrados = [];
     for (let i = 0; i < customers2.length; i++) {
       for (let j = 0; j < customers2[i].tipo.length; j++) {
@@ -111,7 +109,11 @@ export default function Home({
           {tipo === "Articulos" && (
             <>
               {categorias.map((i: any, key: any) => (
-                <div className={styles.filter} key={key}>
+                <div
+                  className={styles.filter}
+                  key={key}
+                  onClick={() => dispatch(filterArticulos(i))}
+                >
                   {i}
                 </div>
               ))}

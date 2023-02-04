@@ -25,8 +25,19 @@ export const userSlice = createSlice({
       state.robosOriginal = action.payload;
     },
     updateRobos: (state, action) => {
-      console.log(state, "state");
       state.robos = action.payload;
+    },
+    filterArticulos: (state, action) => {
+      const articulosFiltrados = [];
+      let customers2 = state.robosOriginal;
+      for (let i = 0; i < customers2.length; i++) {
+        for (let j = 0; j < customers2[i].articulo.length; j++) {
+          if (action.payload === customers2[i].articulo[j]) {
+            articulosFiltrados.push(customers2[i]);
+          }
+        }
+      }
+      state.robos = articulosFiltrados;
     },
     clearFilter: (state) => {
       state.robos = state.robosOriginal;
@@ -49,6 +60,11 @@ export const userSlice = createSlice({
   },
 });
 
-export const { update, updateRobos, updateRobosOriginal, clearFilter } =
-  userSlice.actions; //aqui exportamos las acciones podemos tener varias.
+export const {
+  update,
+  updateRobos,
+  updateRobosOriginal,
+  clearFilter,
+  filterArticulos,
+} = userSlice.actions; //aqui exportamos las acciones podemos tener varias.
 export default userSlice.reducer;
