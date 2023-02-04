@@ -25,8 +25,11 @@ export const userSlice = createSlice({
       state.robosOriginal = action.payload;
     },
     updateRobos: (state, action) => {
-      console.log(action.payload, "actionpayload");
+      console.log(state, "state");
       state.robos = action.payload;
+    },
+    clearFilter: (state) => {
+      state.robos = state.robosOriginal;
     },
   },
   extraReducers: {
@@ -46,5 +49,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { update, updateRobos, updateRobosOriginal } = userSlice.actions; //aqui exportamos las acciones podemos tener varias.
+export const { update, updateRobos, updateRobosOriginal, clearFilter } =
+  userSlice.actions; //aqui exportamos las acciones podemos tener varias.
 export default userSlice.reducer;

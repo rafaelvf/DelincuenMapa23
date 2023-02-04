@@ -8,7 +8,7 @@ import styles from "../styles/Home.module.scss";
 import Board from "../components/Board";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { updateRobos, updateRobosOriginal } from "../redux/userSlice";
+import { updateRobos, clearFilter } from "../redux/userSlice";
 import { useEffect, useState } from "react";
 import { updateRobosAction } from "../redux/apiCalls";
 import { updateCustomers } from "../redux/userSlice";
@@ -50,7 +50,7 @@ export default function Home({
   console.log(customersFiltrados, "customersFiltrados");
   useEffect(() => {
     dispatch(updateRobos(customersFiltrados));
-  });
+  }, [customersFiltrados]);
   return (
     <div className={styles.container}>
       <Head>
@@ -62,7 +62,12 @@ export default function Home({
         <Nav />
         <div className={styles.filterContainer}>
           {tipo !== "" && (
-            <div className={styles.filterBorrar} onClick={() => setTipo("")}>
+            <div
+              className={styles.filterBorrar}
+              onClick={() => {
+                setTipo(""), dispatch(clearFilter());
+              }}
+            >
               Borrar Filtros
             </div>
           )}
