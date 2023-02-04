@@ -39,6 +39,32 @@ export const userSlice = createSlice({
       }
       state.robos = articulosFiltrados;
     },
+    filterDay: (state, action) => {
+      let articulosFiltrados = [];
+      let customers2 = state.robosOriginal;
+      const dia = customers2.filter((i) => {
+        if (
+          i.fechaHora.split("T")[1] > "06:29" &&
+          i.fechaHora.split("T")[1] < "18:31"
+        ) {
+          return i;
+        }
+      });
+      const noche = customers2.filter((i) => {
+        if (
+          i.fechaHora.split("T")[1] < "06:30" ||
+          i.fechaHora.split("T")[1] > "18:30"
+        ) {
+          return i;
+        }
+      });
+      if (action.payload === "Dia") {
+        articulosFiltrados = dia;
+      } else if (action.payload === "Noche") {
+        articulosFiltrados = noche;
+      }
+      state.robos = articulosFiltrados;
+    },
     clearFilter: (state) => {
       state.robos = state.robosOriginal;
     },
@@ -66,5 +92,6 @@ export const {
   updateRobosOriginal,
   clearFilter,
   filterArticulos,
+  filterDay,
 } = userSlice.actions; //aqui exportamos las acciones podemos tener varias.
 export default userSlice.reducer;

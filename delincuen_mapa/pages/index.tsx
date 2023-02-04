@@ -8,7 +8,12 @@ import styles from "../styles/Home.module.scss";
 import Board from "../components/Board";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { updateRobos, clearFilter, filterArticulos } from "../redux/userSlice";
+import {
+  updateRobos,
+  clearFilter,
+  filterArticulos,
+  filterDay,
+} from "../redux/userSlice";
 import { useEffect, useState } from "react";
 
 import { updateCustomers } from "../redux/userSlice";
@@ -80,14 +85,24 @@ export default function Home({
             </div>
           )}
           {(tipo === "" || tipo === "Dia") && (
-            <div className={styles.filter} onClick={() => setTipo("Dia")}>
+            <div
+              className={styles.filter}
+              onClick={() => {
+                setTipo("Dia"), dispatch(filterDay("Dia"));
+              }}
+            >
               <div className={styles.filterAlignment}>
                 Día <img src="/sun.svg" className={styles.sun} />
               </div>
             </div>
           )}
           {(tipo === "" || tipo === "Noche") && (
-            <div className={styles.filter} onClick={() => setTipo("Noche")}>
+            <div
+              className={styles.filter}
+              onClick={() => {
+                setTipo("Noche"), dispatch(filterDay("Noche"));
+              }}
+            >
               <div className={styles.filterAlignment}>
                 Noche <div className={styles.moon}></div>
               </div>
