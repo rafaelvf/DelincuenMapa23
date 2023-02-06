@@ -148,10 +148,10 @@ export default function Home({
           )}
         </div>
         <div className={styles.subContainer}>
-          <div style={{ width: "50%" }}>
+          <div className={styles.subSubContainer}>
             <Map customers={customers} />
           </div>
-          <div style={{ width: "50%" }}>
+          <div className={styles.subSubContainer}>
             <Board customers={customers} />
           </div>
         </div>

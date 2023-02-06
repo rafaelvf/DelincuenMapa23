@@ -11,7 +11,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-
+  @media (max-width: 700px) {
+    position: fixed;
+  }
   //border: 1px solid red;
 }
 .logo {
@@ -36,6 +38,9 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
+  @media (max-width: 700px) {
+    display: none;
+  }
 }
 .bannerInside {
   overflow: hidden;

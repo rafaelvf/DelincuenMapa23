@@ -87,15 +87,17 @@ export default function Tweets({
             {articulo && articulo.length > 0 && (
               <div className={styles.infoContainer}>
                 <img src="/bullet.svg" className={styles.commodity} />
-                {articulo?.map((i: any, key: any) => (
-                  <div className={styles.articuloContainer} key={key}>
-                    {/* <img
+                <div className={styles.listadoArticulos}>
+                  {articulo?.map((i: any, key: any) => (
+                    <div className={styles.articuloContainer} key={key}>
+                      {/* <img
                       src="/bulletPoint.svg"
                       className={styles.bulletPoint}
                     /> */}
-                    {i}
-                  </div>
-                ))}
+                      {i}
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>
