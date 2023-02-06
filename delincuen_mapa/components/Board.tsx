@@ -18,6 +18,8 @@ export default function Board({ customers }: any) {
           tipo={i.tipo}
           valor={i.valor}
           articulo={i.articulo}
+          latitud={i.coordenadas.lat}
+          longitud={i.coordenadas.lng}
           key={key}
         />
       ))}

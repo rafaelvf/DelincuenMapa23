@@ -22,7 +22,7 @@ export default function Map({ customers }: any) {
     <div className={styles.container}>
       <MapContainer
         center={[-2.2, -79.93]}
-        zoom={13}
+        zoom={11}
         scrollWheelZoom={true}
         style={{ height: "100%", width: "100%" }}
       >
