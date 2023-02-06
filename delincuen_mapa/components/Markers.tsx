@@ -2,14 +2,21 @@ import React from "react";
 import { Marker, Popup } from "react-leaflet";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Icon } from "leaflet";
-
+import { useDispatch, useSelector } from "react-redux";
+import { filterId } from "../redux/userSlice";
 const Markers = ({ customers }: any) => {
   console.log(customers, "robos");
-
+  const dispatch = useDispatch();
   const markers =
     customers && customers.length
       ? customers.map((place: any, i: any) => (
-          <Marker key={i} position={place.coordenadas}>
+          <Marker
+            key={i}
+            position={place.coordenadas}
+            eventHandlers={{
+              click: () => dispatch(filterId(place._id)),
+            }}
+          >
             <Popup>
               Tipo de Delito: {place.tipo}
               <br />

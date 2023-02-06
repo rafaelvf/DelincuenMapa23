@@ -65,6 +65,15 @@ export const userSlice = createSlice({
       }
       state.robos = articulosFiltrados;
     },
+    filterId: (state, action) => {
+      let id = [];
+      for (let i = 0; i < state.robos.length; i++) {
+        if (state.robos[i]._id === action.payload) {
+          id.push(state.robos[i]);
+        }
+      }
+      state.robos = id;
+    },
     clearFilter: (state) => {
       state.robos = state.robosOriginal;
     },
@@ -93,5 +102,6 @@ export const {
   clearFilter,
   filterArticulos,
   filterDay,
+  filterId,
 } = userSlice.actions; //aqui exportamos las acciones podemos tener varias.
 export default userSlice.reducer;

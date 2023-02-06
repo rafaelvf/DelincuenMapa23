@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
 .container {
   position: relative;
   top: 0;
@@ -9,8 +11,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  margin-left: -8px;
-  margin-top: -8px;
+
+  //border: 1px solid red;
 }
 .logo {
   height: 50px;
@@ -21,6 +23,7 @@
   display: flex;
   align-items: center;
   gap: 4rem;
+  //border: 1px solid red;
 }
 .banner {
   width: 200px;
@@ -42,9 +45,10 @@
   left: 00%;
   transform: translate(0%, -50%);
   overflow: hidden;
-  animation: slider 10s infinite;
+  animation: slider 15s infinite;
 }
 .bannerText {
+  font-family: "Open Sans";
   color: red;
   position: relative;
   width: 33.33333333%;
@@ -75,4 +79,5 @@
   width: 60px;
   height: 30px;
   cursor: pointer;
+  margin-right: 10px;
 }

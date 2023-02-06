@@ -1,7 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
 .container {
   margin: 0;
   padding: 0;
   width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-family: "Open Sans";
 }
 .subContainer {
   margin-left: -8px;
@@ -11,8 +18,7 @@
 .filterContainer {
   background-color: #30323d;
   padding: 1rem;
-  margin-left: -8px;
-  margin-right: -8px;
+
   display: flex;
   gap: 16px;
 }

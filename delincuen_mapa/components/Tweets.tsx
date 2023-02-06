@@ -40,7 +40,7 @@ export default function Tweets({
   }
   useEffect(() => {
     if (onlyDate[1] > "06:29" && onlyDate[1] < "18:30") {
-      setDayimg("/sun.svg");
+      setDayimg("/day2.svg");
     } else if (onlyDate[1] < "06:30" || onlyDate[1] > "18:30") {
       setDayimg("/moon2.svg");
     }
@@ -89,10 +89,10 @@ export default function Tweets({
                 <img src="/bullet.svg" className={styles.commodity} />
                 {articulo?.map((i: any, key: any) => (
                   <div className={styles.articuloContainer} key={key}>
-                    <img
+                    {/* <img
                       src="/bulletPoint.svg"
                       className={styles.bulletPoint}
-                    />
+                    /> */}
                     {i}
                   </div>
                 ))}
