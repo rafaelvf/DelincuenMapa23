@@ -28,6 +28,7 @@ export default function Home({
   );
 
   const [tipo, setTipo] = useState("");
+  const [subTipo, setSubTipo] = useState("");
   const [customersFiltrados, setCustomersFiltrados] = useState();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -47,10 +48,10 @@ export default function Home({
       }
     }
 
-    console.log(customersFiltrados);
+    //console.log(customersFiltrados);
     setCustomersFiltrados(customersFiltrados);
   }
-  console.log(customersFiltrados, "customersFiltrados");
+  //console.log(customersFiltrados, "customersFiltrados");
   useEffect(() => {
     dispatch(updateRobos(customersFiltrados));
   }, [customersFiltrados]);
@@ -68,25 +69,33 @@ export default function Home({
             <div
               className={styles.filterBorrar}
               onClick={() => {
-                setTipo(""), dispatch(clearFilter());
+                setSubTipo(""), setTipo(""), dispatch(clearFilter());
               }}
             >
               Borrar Filtros
             </div>
           )}
           {(tipo === "" || tipo === "Delito") && (
-            <div className={styles.filter} onClick={() => setTipo("Delito")}>
+            <div
+              className={tipo === "Delito" ? styles.filterClick : styles.filter}
+              onClick={() => setTipo("Delito")}
+            >
               Delito
             </div>
           )}
           {(tipo === "" || tipo === "Articulos") && (
-            <div className={styles.filter} onClick={() => setTipo("Articulos")}>
+            <div
+              className={
+                tipo === "Articulos" ? styles.filterClick : styles.filter
+              }
+              onClick={() => setTipo("Articulos")}
+            >
               Artículos
             </div>
           )}
           {(tipo === "" || tipo === "Dia") && (
             <div
-              className={styles.filter}
+              className={tipo === "Dia" ? styles.filterClick : styles.filter}
               onClick={() => {
                 setTipo("Dia"), dispatch(filterDay("Dia"));
               }}
@@ -98,7 +107,7 @@ export default function Home({
           )}
           {(tipo === "" || tipo === "Noche") && (
             <div
-              className={styles.filter}
+              className={tipo === "Noche" ? styles.filterClick : styles.filter}
               onClick={() => {
                 setTipo("Noche"), dispatch(filterDay("Noche"));
               }}
@@ -112,9 +121,11 @@ export default function Home({
             <>
               {metodo.map((i: any, key: any) => (
                 <div
-                  className={styles.filter}
+                  className={subTipo === i ? styles.filterClick : styles.filter}
                   key={key}
-                  onClick={() => filtrado(i)}
+                  onClick={() => {
+                    filtrado(i), setSubTipo(i);
+                  }}
                 >
                   {i}
                 </div>
@@ -125,9 +136,11 @@ export default function Home({
             <>
               {categorias.map((i: any, key: any) => (
                 <div
-                  className={styles.filter}
+                  className={subTipo === i ? styles.filterClick : styles.filter}
                   key={key}
-                  onClick={() => dispatch(filterArticulos(i))}
+                  onClick={() => {
+                    dispatch(filterArticulos(i)), setSubTipo(i);
+                  }}
                 >
                   {i}
                 </div>

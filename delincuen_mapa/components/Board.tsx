@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 export default function Board({ customers }: any) {
   const customersFiltered = useSelector((state: any) => state.user.robos);
-  console.log(customersFiltered, "customersFiltered");
+  //console.log(customersFiltered, "customersFiltered");
   const peopleArray = !customersFiltered ? customers : customersFiltered;
 
   return (

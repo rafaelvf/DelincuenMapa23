@@ -1,10 +1,28 @@
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import styles from "../styles/Nav.module.scss";
 
 const dataCrimenes = ["5 Crimenes Registrados", "3 Muertes", "4 Desaparecidos"];
 
 const Nav = () => {
+  const robos = useSelector((state: any) => state.user.robosOriginal);
+  const crimenesRegistrados = robos.length;
+  function filtrado(filtro: string) {
+    const customersFiltrados = [];
+    for (let i = 0; i < robos.length; i++) {
+      for (let j = 0; j < robos[i].tipo.length; j++) {
+        if (filtro === robos[i].tipo[j]) {
+          customersFiltrados.push(robos[i]);
+        }
+      }
+    }
+
+    return customersFiltrados;
+  }
+  const casas = filtrado("Robo a casas habitación");
+  const caminaba = filtrado("Asalto a transeúntes");
+
   return (
     <div className={styles.container}>
       <Link href={"/"}>
@@ -13,11 +31,15 @@ const Nav = () => {
       <div className={styles.rightContainer}>
         <div className={styles.banner}>
           <div className={styles.bannerInside}>
-            {dataCrimenes.map((i: any, key: any) => (
-              <div className={styles.bannerText} key={key}>
-                {i}
-              </div>
-            ))}
+            <div className={styles.bannerText}>
+              {`${crimenesRegistrados} crimenes registrados`}
+            </div>
+            <div className={styles.bannerText}>
+              {`${casas.length} crimenes a casas`}
+            </div>
+            <div className={styles.bannerText}>
+              {`${caminaba.length} crimenes a peatones`}
+            </div>
           </div>
         </div>
         <Link href={"/form"}>

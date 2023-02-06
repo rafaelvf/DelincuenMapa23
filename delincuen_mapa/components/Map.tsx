@@ -1,6 +1,8 @@
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
+import { useSelector } from "react-redux";
+
 import {
   MapContainer,
   TileLayer,
@@ -13,6 +15,9 @@ import styles from "../styles/Map.module.scss";
 import Markers from "./Markers";
 
 export default function Map({ customers }: any) {
+  const customersFiltered = useSelector((state: any) => state.user.robos);
+  //console.log(customersFiltered, "customersFiltered");
+  const peopleArray = !customersFiltered ? customers : customersFiltered;
   return (
     <div className={styles.container}>
       <MapContainer
@@ -25,7 +30,7 @@ export default function Map({ customers }: any) {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Markers customers={customers} />
+        <Markers customers={peopleArray} />
       </MapContainer>
     </div>
   );

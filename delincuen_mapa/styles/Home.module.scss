@@ -30,6 +30,16 @@
   color: #30323d;
   background-color: white;
 }
+.filterClick {
+  border: 3px solid white;
+  color: #30323d;
+  background-color: white;
+  border-radius: 30px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.5s;
+  text-align: center;
+}
 .filterBorrar {
   border: 3px solid white;
   color: white;
