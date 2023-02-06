@@ -48,10 +48,9 @@ export default function Home({
       }
     }
 
-    //console.log(customersFiltrados);
     setCustomersFiltrados(customersFiltrados);
   }
-  //console.log(customersFiltrados, "customersFiltrados");
+
   useEffect(() => {
     dispatch(updateRobos(customersFiltrados));
   }, [customersFiltrados]);
