@@ -9,3 +9,19 @@
   flex-direction: column;
   overflow: scroll;
 }
+.borrarFiltros {
+  border: 1px solid #30323d;
+  color: #30323d;
+  background-color: white;
+  border-radius: 30px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.5s;
+  text-align: center;
+  width: 100px;
+  margin: 3rem auto;
+}
+.borrarFiltros:hover {
+  color: white;
+  background-color: #30323d;
+}

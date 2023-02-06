@@ -67,9 +67,10 @@ export const userSlice = createSlice({
     },
     filterId: (state, action) => {
       let id = [];
-      for (let i = 0; i < state.robos.length; i++) {
-        if (state.robos[i]._id === action.payload) {
-          id.push(state.robos[i]);
+      let robos = state.robosOriginal;
+      for (let i = 0; i < robos.length; i++) {
+        if (robos[i]._id === action.payload) {
+          id.push(robos[i]);
         }
       }
       state.robos = id;

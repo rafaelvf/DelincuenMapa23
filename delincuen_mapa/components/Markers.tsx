@@ -17,13 +17,13 @@ const Markers = ({ customers }: any) => {
               click: () => dispatch(filterId(place._id)),
             }}
           >
-            <Popup>
+            {/* <Popup>
               Tipo de Delito: {place.tipo}
               <br />
               Latitud: {place.coordenadas.lat}
               <br />
               Longitud:{place.coordenadas.lng}
-            </Popup>
+            </Popup> */}
           </Marker>
         ))
       : null;
