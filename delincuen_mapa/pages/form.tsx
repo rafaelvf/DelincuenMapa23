@@ -40,13 +40,7 @@ export default function Form() {
     dispatch(update({ name, email }));
   }
 
-  // console.log(name, "name");
-  // console.log(email, "email");
-  // console.log(name2, "name2");
-  // console.log(email2, "email2");
-
   const pull_data = (data: any) => {
-    //console.log(data, "kkk");
     setCoord(data);
   };
 

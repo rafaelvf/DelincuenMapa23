@@ -2,6 +2,7 @@
 
 .container {
   position: relative;
+
   top: 0;
   left: 0;
   width: 100%;
@@ -12,9 +13,8 @@
   justify-content: space-between;
   padding: 0 1rem;
   @media (max-width: 700px) {
-    position: fixed;
+    position: absolute;
   }
-  //border: 1px solid red;
 }
 .logo {
   height: 50px;
@@ -24,8 +24,10 @@
 .rightContainer {
   display: flex;
   align-items: center;
-  gap: 4rem;
-  //border: 1px solid red;
+  gap: 3rem;
+  @media (max-width: 900px) {
+    gap: 2rem;
+  }
 }
 .banner {
   width: 200px;
@@ -81,8 +83,8 @@
   }
 }
 .formButton {
-  width: 60px;
+  width: 30px;
   height: 30px;
   cursor: pointer;
-  margin-right: 10px;
+  //margin-right: 10px;
 }

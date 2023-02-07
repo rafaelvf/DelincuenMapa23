@@ -63,6 +63,7 @@ export default function Home({
 
       <main>
         <Nav />
+
         <div className={styles.filterContainer}>
           {tipo !== "" && (
             <div

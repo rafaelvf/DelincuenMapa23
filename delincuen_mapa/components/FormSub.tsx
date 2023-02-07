@@ -4,6 +4,8 @@ import { useFormik } from "formik";
 import { basicSchema } from "../schemas/index";
 import axios from "axios";
 import { metodo, categorias } from "../data";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const FormSub = ({ coord }: any) => {
   const [validate, setValidate] = useState(false);
@@ -31,15 +33,21 @@ const FormSub = ({ coord }: any) => {
     descripcion: formik.values.descripcion,
   };
   console.log(post, "post");
-
+  const notify = () => toast("Se ha creado correctamente!");
+  const nofifyError = () =>
+    toast.error("Por favor selccionar en el mapa", {
+      position: toast.POSITION.TOP_CENTER,
+    });
   async function handleSubmit() {
     //i.preventDefault();
     if (coord.lat === 1 && coord.lng === 1) {
       console.log("vali v");
-      alert("Por favor selccionar en el mapa");
+      //alert("Por favor selccionar en el mapa");
+      nofifyError();
     } else {
       let res = await axios.post(`http://localhost:3000/api/customer`, post);
-      alert("Se ha creado correctamente!");
+      //alert("Se ha creado correctamente!");
+      notify();
       console.log(res.data);
     }
   }
@@ -148,6 +156,7 @@ const FormSub = ({ coord }: any) => {
           >
             Registrar{" "}
           </button>
+          <ToastContainer />
         </div>
       </form>
     </div>
