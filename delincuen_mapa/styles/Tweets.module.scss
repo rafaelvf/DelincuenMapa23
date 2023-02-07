@@ -9,6 +9,10 @@
   padding: 2rem 0rem 2rem 0rem;
   display: flex;
   gap: 15px;
+  @media (max-width: 700px) {
+    padding: 1rem 0rem 1rem 0rem;
+    //min-height: 200px;
+  }
 }
 .text {
   display: flex;

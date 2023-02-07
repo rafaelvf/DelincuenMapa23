@@ -37,6 +37,7 @@
     margin-top: 70px;
     margin-left: -8px;
     margin-right: -21px;
+    flex-wrap: wrap;
   }
 }
 .filter {
@@ -47,6 +48,9 @@
   cursor: pointer;
   transition: all 0.5s;
   text-align: center;
+  @media (max-width: 700px) {
+    padding: 4px 6px;
+  }
 }
 .filter:hover {
   border: 3px solid white;
@@ -62,6 +66,9 @@
   cursor: pointer;
   transition: all 0.5s;
   text-align: center;
+  @media (max-width: 700px) {
+    padding: 4px 6px;
+  }
 }
 .filterBorrar {
   border: 3px solid white;
