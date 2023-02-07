@@ -12,7 +12,7 @@ import {
   Popup,
   useMapEvents,
 } from "react-leaflet";
-import styles from "../styles/Map.module.scss";
+import styles from "../styles/MapForm.module.scss";
 import { Icon } from "leaflet";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import "leaflet/dist/leaflet.css";
@@ -111,7 +111,8 @@ const MapForm = (props: any) => {
         center={state.currentLocation}
         zoom={12}
         scrollWheelZoom={true}
-        style={{ height: "92vh", width: "100wh" }}
+        style={{ height: "100%", width: "100%" }}
+        // className={styles.mapForm}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

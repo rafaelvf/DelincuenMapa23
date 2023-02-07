@@ -51,7 +51,7 @@ export default function Form() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container}`}>
       <Head>
         <title>DelincuenMapa</title>
         <link rel="icon" href="/favicon.ico" />
@@ -60,10 +60,10 @@ export default function Form() {
       <main>
         <Nav />
         <div className={styles.subContainer}>
-          <div style={{ width: "50%" }}>
+          <div className={styles.subSubContainer}>
             <MapForm func={pull_data} />
           </div>
-          <div style={{ width: "50%" }}>
+          <div className={styles.subSubContainer}>
             <FormSub coord={coord} />
           </div>
         </div>
