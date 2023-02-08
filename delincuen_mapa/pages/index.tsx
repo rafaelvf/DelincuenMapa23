@@ -47,7 +47,7 @@ export default function Home({
         }
       }
     }
-
+    //@ts-ignore
     setCustomersFiltrados(customersFiltrados);
   }
 
