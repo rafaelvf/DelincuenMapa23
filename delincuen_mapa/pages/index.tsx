@@ -18,10 +18,10 @@ import { useEffect, useState } from "react";
 
 import { updateCustomers } from "../redux/userSlice";
 import { metodo, categorias } from "../data";
-
-export default function Home({
-  customers,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+//{
+//   customers,
+// }: InferGetServerSidePropsType<typeof getServerSideProps>
+export default function Home() {
   const Map = dynamic(
     () => import("../components/Map"), // replace '@components/map' with your component's location
     { ssr: false } // This line is important. It's what prevents server-side render
@@ -150,10 +150,10 @@ export default function Home({
         </div>
         <div className={styles.subContainer}>
           <div className={styles.subSubContainer}>
-            <Map customers={customers} />
+            <Map customers={customers2} />
           </div>
           <div className={styles.subSubContainer}>
-            <Board customers={customers} />
+            <Board customers={customers2} />
           </div>
         </div>
       </main>
@@ -163,11 +163,11 @@ export default function Home({
   );
 }
 
-export async function getServerSideProps() {
-  const res = await axios.get("http://localhost:3000/api/customer");
-  return {
-    props: {
-      customers: res.data,
-    },
-  };
-}
+// export async function getServerSideProps() {
+//   const res = await axios.get("http://localhost:3000/api/customer");
+//   return {
+//     props: {
+//       customers: res.data,
+//     },
+//   };
+// }
