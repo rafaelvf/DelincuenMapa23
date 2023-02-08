@@ -33,7 +33,7 @@ const FormSub = ({ coord }: any) => {
     descripcion: formik.values.descripcion,
   };
   console.log(post, "post");
-  const notify = () => toast("Se ha creado correctamente!");
+  const notify = () => toast("Se ha creado correctamente!!");
   const nofifyError = () =>
     toast.error("Por favor selccionar en el mapa", {
       position: toast.POSITION.TOP_CENTER,
