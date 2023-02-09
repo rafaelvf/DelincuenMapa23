@@ -18,7 +18,8 @@ import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 
 import { updateCustomers } from "../redux/userSlice";
 import { metodo, categorias } from "../data";
-//{
+
+// {
 //   customers,
 // }: InferGetServerSidePropsType<typeof getServerSideProps>
 export default function Home() {
@@ -27,24 +28,51 @@ export default function Home() {
     { ssr: false } // This line is important. It's what prevents server-side render
   );
 
-  const [activado, setActivado] = useState(false);
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [tipo, setTipo] = useState("");
   const [subTipo, setSubTipo] = useState("");
   const [customersFiltrados, setCustomersFiltrados] = useState();
+
   const customers2 = useSelector((state: any) => state.user.robosOriginal);
   console.log(customers2, "customers2");
+
   const dispatch = useDispatch();
   useEffect(() => {
-    setActivado(true);
-  });
-  useEffect(() => {
-    if (customers2.length === 0) {
+    setTimeout(() => {
       //@ts-ignore
       dispatch(updateCustomers());
-      console.log("fetch disparado");
-    }
-  }, [customers2, dispatch]);
+    }, 2000);
+  }, []);
 
+  // useEffect(() => {
+  //   console.log("hola");
+  //   changeState();
+  // });
+  // function changeState() {
+  //   if (customers2.length != 0) {
+  //     setData(customers2);
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     axios
+  //       .get("/api/customer")
+  //       .then((response) => {
+  //         setData(response.data);
+  //         setLoading(false);
+  //       })
+  //       .catch((error) => {
+  //         setError(error);
+  //         setLoading(false);
+  //       });
+  //   }, 5000);
+  // }, []);
+  console.log(data, "data");
+  console.log(loading, "loading");
+  console.log(error, "error");
   function filtrado(filtro: string) {
     const customersFiltrados = [];
     for (let i = 0; i < customers2.length; i++) {
@@ -178,3 +206,5 @@ export default function Home() {
 //     },
 //   };
 // }
+
+//https://catfact.ninja/fact

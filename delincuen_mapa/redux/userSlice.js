@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const updateCustomers = createAsyncThunk("updateCustomers", async () => {
-  const res = await axios.get("api/customer");
+  const res = await axios.get("/api/customer");
   return res.data;
 });
 
@@ -81,20 +81,20 @@ export const userSlice = createSlice({
       state.robos = state.robosOriginal;
     },
   },
-  extraReducers: {
-    [updateCustomers.pending]: (state) => {
+  extraReducers: (builder) => {
+    builder.addCase(updateCustomers.pending, (state) => {
       state.loading = true;
-      state.error = null;
-    },
-    [updateCustomers.fulfilled]: (state, action) => {
+    });
+    builder.addCase(updateCustomers.fulfilled, (state, action) => {
       state.loading = false;
       state.robosOriginal = action.payload;
-      //state.robos = action.payload;
-    },
-    [updateCustomers.rejected]: (state, action) => {
-      state.error = action.error;
+      state.error = "";
+    });
+    builder.addCase(updateCustomers.rejected, (state, action) => {
       state.loading = false;
-    },
+      state.robosOriginal = [];
+      state.error = action.error.message;
+    });
   },
 });
 
@@ -108,3 +108,19 @@ export const {
   filterId,
 } = userSlice.actions; //aqui exportamos las acciones podemos tener varias.
 export default userSlice.reducer;
+
+// {
+//   [updateCustomers.pending]: (state) => {
+//     state.loading = true;
+//     state.error = null;
+//   },
+//   [updateCustomers.fulfilled]: (state, action) => {
+//     state.loading = false;
+//     state.robosOriginal = action.payload;
+//     //state.robos = action.payload;
+//   },
+//   [updateCustomers.rejected]: (state, action) => {
+//     state.error = action.error;
+//     state.loading = false;
+//   },
+// },
