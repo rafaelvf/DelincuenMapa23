@@ -14,7 +14,7 @@ import {
   filterArticulos,
   filterDay,
 } from "../redux/userSlice";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 
 import { updateCustomers } from "../redux/userSlice";
 import { metodo, categorias } from "../data";
@@ -27,16 +27,23 @@ export default function Home() {
     { ssr: false } // This line is important. It's what prevents server-side render
   );
 
+  const [activado, setActivado] = useState(false);
   const [tipo, setTipo] = useState("");
   const [subTipo, setSubTipo] = useState("");
   const [customersFiltrados, setCustomersFiltrados] = useState();
+  const customers2 = useSelector((state: any) => state.user.robosOriginal);
+  console.log(customers2, "customers2");
   const dispatch = useDispatch();
   useEffect(() => {
-    //@ts-ignore
-    dispatch(updateCustomers());
-  }, []);
-
-  const customers2 = useSelector((state: any) => state.user.robosOriginal);
+    setActivado(true);
+  });
+  useEffect(() => {
+    if (customers2.length === 0) {
+      //@ts-ignore
+      dispatch(updateCustomers());
+      console.log("fetch disparado");
+    }
+  }, [customers2, dispatch]);
 
   function filtrado(filtro: string) {
     const customersFiltrados = [];

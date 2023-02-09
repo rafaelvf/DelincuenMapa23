@@ -15,6 +15,8 @@ export const userSlice = createSlice({
     },
     robosOriginal: [],
     robos: [],
+    loading: false,
+    error: null,
   },
   reducers: {
     update: (state, action) => {
@@ -81,17 +83,17 @@ export const userSlice = createSlice({
   },
   extraReducers: {
     [updateCustomers.pending]: (state) => {
-      state.pending = true;
-      state.error = false;
+      state.loading = true;
+      state.error = null;
     },
     [updateCustomers.fulfilled]: (state, action) => {
-      state.pending = false;
+      state.loading = false;
       state.robosOriginal = action.payload;
       //state.robos = action.payload;
     },
-    [updateCustomers.pending]: (state) => {
-      state.pending = null;
-      state.error = true;
+    [updateCustomers.rejected]: (state, action) => {
+      state.error = action.error;
+      state.loading = false;
     },
   },
 });
