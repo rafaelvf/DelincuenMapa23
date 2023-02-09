@@ -48,7 +48,6 @@ export default function Tweets({
   useEffect(() => {
     imgSelector(tipo);
   }, [img]);
-  //console.log(articulo, "kkk");
 
   const onlyDate = fecha.split("T");
 
