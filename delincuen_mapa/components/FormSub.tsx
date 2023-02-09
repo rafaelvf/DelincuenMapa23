@@ -45,7 +45,7 @@ const FormSub = ({ coord }: any) => {
       //alert("Por favor selccionar en el mapa");
       nofifyError();
     } else {
-      let res = await axios.post(`http://localhost:3000/api/customer`, post);
+      let res = await axios.post(`/api/customer`, post);
       //alert("Se ha creado correctamente!");
       notify();
       console.log(res.data);
