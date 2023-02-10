@@ -32,13 +32,13 @@ const Nav = () => {
         <div className={styles.banner}>
           <div className={styles.bannerInside}>
             <div className={styles.bannerText}>
-              {`${crimenesRegistrados} crimenes registrados`}
+              {`${crimenesRegistrados} Crimenes registrados`}
             </div>
             <div className={styles.bannerText}>
-              {`${casas.length} crimenes a casas`}
+              {`${casas.length} Crimenes a casas`}
             </div>
             <div className={styles.bannerText}>
-              {`${caminaba.length} crimenes a peatones`}
+              {`${caminaba.length} Crimenes a peatones`}
             </div>
           </div>
         </div>
