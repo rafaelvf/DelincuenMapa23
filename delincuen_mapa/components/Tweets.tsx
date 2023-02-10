@@ -32,7 +32,7 @@ export default function Tweets({
       setImg("/7.svg");
     } else if (imgS[0] === "Robo a casas habitación") {
       setImg("/6.svg");
-    } else if (imgS[0] === "Violencia") {
+    } else if (imgS[0] === "Violencia" || "Acoso" || "Abuso") {
       setImg("/2.svg");
     } else {
       setImg("/1.svg");
@@ -73,14 +73,14 @@ export default function Tweets({
               <div className={styles.fecha}>{onlyDate[1]}</div>
             </div>
             <div className={styles.infoContainer}>
-              <img src="/map.svg" className={styles.commodity} />
+              <img src="/map2.svg" className={styles.commodity} />
               <div className={styles.fecha}>{latitud.toFixed(4)}</div>
               <div className={styles.fecha}>{longitud.toFixed(4)}</div>
             </div>
           </div>
           <div className={styles.locationContainer}>
             <div className={styles.infoContainer}>
-              <img src="/dollar.svg" className={styles.commodity} />
+              <img src="/dollar2.svg" className={styles.commodity} />
               <div className={styles.fecha}>{valor}</div>
             </div>
             {articulo && articulo.length > 0 && (

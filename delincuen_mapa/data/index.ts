@@ -4,6 +4,8 @@ export const metodo = [
   "Robo de vehículos",
   "Robo a casas habitación",
   "Violencia",
+  "Acoso",
+  "Abuso",
   "Otros",
 ];
 export const categorias = [

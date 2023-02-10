@@ -125,7 +125,7 @@ export default function Home() {
               }
               onClick={() => setTipo("Articulos")}
             >
-              Artículos
+              Objetos
             </div>
           )}
           {(tipo === "" || tipo === "Dia") && (

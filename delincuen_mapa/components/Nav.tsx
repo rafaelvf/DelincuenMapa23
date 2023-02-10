@@ -44,7 +44,7 @@ const Nav = () => {
         </div>
         <Link href={"/form"}>
           {" "}
-          <img src="/form-svgrepo-com.svg" className={styles.formButton}></img>
+          <img src="/form2.svg" className={styles.formButton}></img>
         </Link>
       </div>
     </div>
