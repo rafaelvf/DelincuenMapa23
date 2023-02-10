@@ -13,6 +13,7 @@ import {
   clearFilter,
   filterArticulos,
   filterDay,
+  despacho,
 } from "../redux/userSlice";
 import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 
@@ -36,14 +37,18 @@ export default function Home() {
   const [customersFiltrados, setCustomersFiltrados] = useState();
 
   const customers2 = useSelector((state: any) => state.user.robosOriginal);
+  const despacho2 = useSelector((state: any) => state.user.despacho);
   console.log(customers2, "customers2");
 
   const dispatch = useDispatch();
   useEffect(() => {
     setTimeout(() => {
-      //@ts-ignore
-      dispatch(updateCustomers());
-    }, 2000);
+      if (!despacho2) {
+        //@ts-ignore
+        dispatch(updateCustomers());
+        dispatch(despacho(true));
+      }
+    }, 2500);
   }, []);
 
   // useEffect(() => {
@@ -73,6 +78,7 @@ export default function Home() {
   console.log(data, "data");
   console.log(loading, "loading");
   console.log(error, "error");
+  console.log(despacho, "despacho");
   function filtrado(filtro: string) {
     const customersFiltrados = [];
     for (let i = 0; i < customers2.length; i++) {
