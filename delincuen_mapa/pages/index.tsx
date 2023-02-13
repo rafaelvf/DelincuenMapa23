@@ -39,6 +39,28 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className={styles.misionContainer}>
+          <div className={`${styles.title} ${styles.titleBlack}`}>
+            Que es DelincuenMapa?
+          </div>
+          <div className={styles.inconsContainer}>
+            <img src="/pin.svg" className={styles.icon} />
+            <div className={styles.plus}>+</div>
+            <img src="/3.svg" className={styles.icon} />
+            <div className={styles.plus}>+</div>
+            <img src="/map2.svg" className={styles.icon} />
+          </div>
+          <div className={styles.text2}>
+            <span className={styles.underline}>Delincuenmapa </span>surge debido
+            a la alta inseguridad que se vive en el pais hoy en dia y la falta
+            de informacion al respecto.
+            <br />
+            <div className={styles.space}></div> Usando la tecnologia
+            <span className={styles.plus2}>+</span>la union de la gente, podemos
+            lograr plasmar realmente los actos de delincuencia que se viven. De
+            la gente para la gente{" "}
+          </div>
+        </div>
       </main>
 
       <footer></footer>

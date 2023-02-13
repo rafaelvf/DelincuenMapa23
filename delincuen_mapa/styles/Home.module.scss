@@ -57,6 +57,10 @@
   z-index: 2;
   display: flex;
   justify-content: center;
+
+  &Black {
+    color: black;
+  }
 }
 .text {
   color: #ffffff;
@@ -67,6 +71,11 @@
   justify-content: center;
   @media (max-width: 700px) {
     font-size: 20px;
+  }
+
+  &Black {
+    color: black;
+    max-width: 700px;
   }
 }
 .optionsContainer {
@@ -114,4 +123,49 @@
     display: flex;
     justify-content: center;
   }
+}
+.misionContainer {
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  justify-content: center;
+  flex-direction: column;
+  margin: 5rem 0;
+}
+.inconsContainer {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  justify-content: center;
+}
+.icon {
+  width: 60px;
+  height: 60px;
+}
+.plus {
+  font-size: 35px;
+}
+.plus2 {
+  font-size: 25px;
+  margin: 0 5px;
+  color: #a80906;
+}
+.space {
+  height: 1rem;
+}
+.text2 {
+  color: black;
+  max-width: 700px;
+  font-size: 22px;
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: 700px) {
+    font-size: 20px;
+  }
+}
+.underline {
+  text-decoration: underline;
+  text-decoration-color: #a80906;
+  text-decoration-thickness: 3px;
 }
