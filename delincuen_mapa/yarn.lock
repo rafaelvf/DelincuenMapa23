@@ -756,6 +756,71 @@
   dependencies:
     "regenerator-runtime" "^0.13.11"
 
+"@emotion/is-prop-valid@^0.8.2":
+  "integrity" "sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA=="
+  "resolved" "https://registry.npmjs.org/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz"
+  "version" "0.8.8"
+  dependencies:
+    "@emotion/memoize" "0.7.4"
+
+"@emotion/memoize@0.7.4":
+  "integrity" "sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw=="
+  "resolved" "https://registry.npmjs.org/@emotion/memoize/-/memoize-0.7.4.tgz"
+  "version" "0.7.4"
+
+"@motionone/animation@^10.15.1":
+  "integrity" "sha512-mZcJxLjHor+bhcPuIFErMDNyrdb2vJur8lSfMCsuCB4UyV8ILZLvK+t+pg56erv8ud9xQGK/1OGPt10agPrCyQ=="
+  "resolved" "https://registry.npmjs.org/@motionone/animation/-/animation-10.15.1.tgz"
+  "version" "10.15.1"
+  dependencies:
+    "@motionone/easing" "^10.15.1"
+    "@motionone/types" "^10.15.1"
+    "@motionone/utils" "^10.15.1"
+    "tslib" "^2.3.1"
+
+"@motionone/dom@^10.15.3":
+  "integrity" "sha512-Xc5avlgyh3xukU9tydh9+8mB8+2zAq+WlLsC3eEIp7Ax7DnXgY7Bj/iv0a4X2R9z9ZFZiaXK3BO0xMYHKbAAdA=="
+  "resolved" "https://registry.npmjs.org/@motionone/dom/-/dom-10.15.5.tgz"
+  "version" "10.15.5"
+  dependencies:
+    "@motionone/animation" "^10.15.1"
+    "@motionone/generators" "^10.15.1"
+    "@motionone/types" "^10.15.1"
+    "@motionone/utils" "^10.15.1"
+    "hey-listen" "^1.0.8"
+    "tslib" "^2.3.1"
+
+"@motionone/easing@^10.15.1":
+  "integrity" "sha512-6hIHBSV+ZVehf9dcKZLT7p5PEKHGhDwky2k8RKkmOvUoYP3S+dXsKupyZpqx5apjd9f+php4vXk4LuS+ADsrWw=="
+  "resolved" "https://registry.npmjs.org/@motionone/easing/-/easing-10.15.1.tgz"
+  "version" "10.15.1"
+  dependencies:
+    "@motionone/utils" "^10.15.1"
+    "tslib" "^2.3.1"
+
+"@motionone/generators@^10.15.1":
+  "integrity" "sha512-67HLsvHJbw6cIbLA/o+gsm7h+6D4Sn7AUrB/GPxvujse1cGZ38F5H7DzoH7PhX+sjvtDnt2IhFYF2Zp1QTMKWQ=="
+  "resolved" "https://registry.npmjs.org/@motionone/generators/-/generators-10.15.1.tgz"
+  "version" "10.15.1"
+  dependencies:
+    "@motionone/types" "^10.15.1"
+    "@motionone/utils" "^10.15.1"
+    "tslib" "^2.3.1"
+
+"@motionone/types@^10.15.1":
+  "integrity" "sha512-iIUd/EgUsRZGrvW0jqdst8st7zKTzS9EsKkP+6c6n4MPZoQHwiHuVtTQLD6Kp0bsBLhNzKIBlHXponn/SDT4hA=="
+  "resolved" "https://registry.npmjs.org/@motionone/types/-/types-10.15.1.tgz"
+  "version" "10.15.1"
+
+"@motionone/utils@^10.15.1":
+  "integrity" "sha512-p0YncgU+iklvYr/Dq4NobTRdAPv9PveRDUXabPEeOjBLSO/1FNB2phNTZxOxpi1/GZwYpAoECEa0Wam+nsmhSw=="
+  "resolved" "https://registry.npmjs.org/@motionone/utils/-/utils-10.15.1.tgz"
+  "version" "10.15.1"
+  dependencies:
+    "@motionone/types" "^10.15.1"
+    "hey-listen" "^1.0.8"
+    "tslib" "^2.3.1"
+
 "@next/env@13.1.5":
   "integrity" "sha512-0Ry4NhJy6qLbXhvxPRUQ1H6RzgtryGdUto7hfgAK0Iw/bScgeVjwLZdfhm2iT7qsOS32apo9cWzLCxjc6iGPsA=="
   "resolved" "https://registry.npmjs.org/@next/env/-/env-13.1.5.tgz"
@@ -1026,6 +1091,17 @@
     "tiny-warning" "^1.0.2"
     "tslib" "^1.10.0"
 
+"framer-motion@^9.0.2":
+  "integrity" "sha512-n7ZdIUBrT1xklowQNRQ6/h54+3ysmz422CP0rrhjE1X2tshiJy0WWQ7tv6y/fcOSQd23htNA9vvbUFLYMQ5lEQ=="
+  "resolved" "https://registry.npmjs.org/framer-motion/-/framer-motion-9.0.2.tgz"
+  "version" "9.0.2"
+  dependencies:
+    "@motionone/dom" "^10.15.3"
+    "hey-listen" "^1.0.8"
+    "tslib" "^2.4.0"
+  optionalDependencies:
+    "@emotion/is-prop-valid" "^0.8.2"
+
 "fsevents@~2.3.2":
   "integrity" "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
   "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
@@ -1037,6 +1113,11 @@
   "version" "5.1.2"
   dependencies:
     "is-glob" "^4.0.1"
+
+"hey-listen@^1.0.8":
+  "integrity" "sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q=="
+  "resolved" "https://registry.npmjs.org/hey-listen/-/hey-listen-1.0.8.tgz"
+  "version" "1.0.8"
 
 "hoist-non-react-statics@^3.3.0", "hoist-non-react-statics@^3.3.2":
   "integrity" "sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw=="
