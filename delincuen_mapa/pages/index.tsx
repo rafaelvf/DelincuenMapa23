@@ -2,6 +2,7 @@ import Head from "next/head";
 import Nav from "../components/Nav";
 import styles from "../styles/Home.module.scss";
 import Link from "next/link";
+import InfoCards from "../components/InfoCards";
 
 const text = "Porque DelincuenMapa?";
 export default function Home() {
@@ -41,7 +42,7 @@ export default function Home() {
         </div>
         <div className={styles.misionContainer}>
           <div className={`${styles.title} ${styles.titleBlack}`}>
-            Que es DelincuenMapa?
+            ¿Que es DelincuenMapa?
           </div>
           <div className={styles.inconsContainer}>
             <img src="/pin.svg" className={styles.icon} />
@@ -51,16 +52,19 @@ export default function Home() {
             <img src="/map2.svg" className={styles.icon} />
           </div>
           <div className={styles.text2}>
-            <span className={styles.underline}>Delincuenmapa </span>surge debido
-            a la alta inseguridad que se vive en el pais hoy en dia y la falta
-            de informacion al respecto.
+            <span className={styles.underline}>Delincuenmapa </span> es una
+            plataforma que ayuda combatir la delincuencia, siendo un espacio
+            para que el público pueda registrar a detalle si han vivido algún
+            crimen, y a su vez tener puedan identificar las zonas más peligrosas
+            del país según la experiencia de otros usuarios.
             <br />
-            <div className={styles.space}></div> Usando la tecnologia
-            <span className={styles.plus2}>+</span>la union de la gente, podemos
-            lograr plasmar realmente los actos de delincuencia que se viven. De
-            la gente para la gente{" "}
+            <div className={styles.space}></div> Combinando la tecnología, y la
+            unión de la gente podemos plasmar los actos de delincuencia que se
+            viven a diario, teniendo así un reporte actualizado de las
+            situaciones peligrosas ocurridas.
           </div>
         </div>
+        <InfoCards />
       </main>
 
       <footer></footer>
