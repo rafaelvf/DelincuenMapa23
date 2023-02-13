@@ -65,6 +65,7 @@ export default function Home() {
           </div>
         </div>
         <InfoCards />
+        <div>hola</div>
       </main>
 
       <footer></footer>
