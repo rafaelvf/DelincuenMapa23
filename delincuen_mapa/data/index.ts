@@ -16,3 +16,17 @@ export const categorias = [
   "Joyas",
   "Otros",
 ];
+export const futuro = [
+  {
+    desarrollo: "Pagina con estadisticas",
+    img: "/monitoring.svg",
+  },
+  {
+    desarrollo: "Pagina de contactos",
+    img: "/contacts.svg",
+  },
+  {
+    desarrollo: "Subscripcion para notificacion de robos",
+    img: "/notification.svg",
+  },
+];

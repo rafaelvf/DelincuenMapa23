@@ -3,7 +3,7 @@ import Nav from "../components/Nav";
 import styles from "../styles/Home.module.scss";
 import Link from "next/link";
 import InfoCards from "../components/InfoCards";
-
+import Future from "../components/Future";
 const text = "Porque DelincuenMapa?";
 export default function Home() {
   return (
@@ -65,6 +65,7 @@ export default function Home() {
           </div>
         </div>
         <InfoCards />
+        <Future />
         <div>hola</div>
       </main>
 
