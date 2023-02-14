@@ -7,7 +7,18 @@ const imageAnimate = {
   onScreen: {
     x: 0,
     transition: {
-      duration: 1.5,
+      duration: 2,
+      type: "spring",
+      bounce: 0.3,
+    },
+  },
+};
+const imageAnimate2 = {
+  offScreen: { x: 1000 },
+  onScreen: {
+    x: 0,
+    transition: {
+      duration: 2,
       type: "spring",
       bounce: 0.3,
     },
@@ -24,15 +35,14 @@ export default function InfoCards() {
         </div>
       </div>
 
-      <div className={styles.bottom}>
+      <motion.div
+        className={styles.bottom}
+        initial="offScreen"
+        whileInView="onScreen"
+        viewport={{ once: false, amount: 0.5 }}
+      >
         <Link href="/mapPage">
-          <motion.div
-            className={styles.left}
-            variants={imageAnimate}
-            initial="offScreen"
-            whileInView="onScreen"
-            //viewport={{ once: false, amount: 0.2 }}
-          >
+          <motion.div className={styles.left} variants={imageAnimate}>
             <div className={styles.overlay}></div>
             <img src="/map2White.svg" className={styles.imgMap} />
             <div className={styles.textMap}>
@@ -43,16 +53,16 @@ export default function InfoCards() {
           </motion.div>
         </Link>
         <Link href="/form">
-          <div className={styles.right}>
+          <motion.div className={styles.right} variants={imageAnimate2}>
             <div className={styles.overlay}></div>
             <img src="/form2.svg" className={styles.imgMap} />
             <div className={styles.textMap}>
               En la sección formulario, podrás registrar un crimen que hayas
               recibido en algun momento.
             </div>
-          </div>
+          </motion.div>
         </Link>
-      </div>
+      </motion.div>
     </div>
   );
 }
