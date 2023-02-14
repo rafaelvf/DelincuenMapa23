@@ -29,4 +29,8 @@ export const futuro = [
     desarrollo: "Subscripcion para notificacion de robos",
     img: "/notification.svg",
   },
+  {
+    desarrollo: "Sugerencias",
+    img: "/notes.svg",
+  },
 ];
