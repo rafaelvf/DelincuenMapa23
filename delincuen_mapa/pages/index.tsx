@@ -41,9 +41,7 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.misionContainer}>
-          <div className={`${styles.title} ${styles.titleBlack}`}>
-            ¿Qué es DelincuenMapa?
-          </div>
+          <div className={`${styles.titleBlack}`}>¿Qué es DelincuenMapa?</div>
           <div className={styles.inconsContainer}>
             <img src="/pin.svg" className={styles.icon} />
             <div className={styles.plus}>+</div>

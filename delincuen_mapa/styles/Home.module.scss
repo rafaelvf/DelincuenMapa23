@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap");
 .container {
   margin: 0;
   padding: 0;
@@ -57,12 +57,37 @@
   z-index: 2;
   display: flex;
   justify-content: center;
-
-  &Black {
-    color: black;
-    @media (max-width: 700px) {
-      font-size: 28px;
-    }
+  font-family: "Source Code Pro", monospace;
+}
+.title::before,
+.title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.title::before {
+  background-color: #e8c547;
+  animation: typewriter 2s steps(13) forwards;
+  //animation-iteration-count: 3;
+}
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+.titleBlack {
+  font-size: 45px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  color: black;
+  font-family: "Open Sans";
+  @media (max-width: 700px) {
+    font-size: 28px;
   }
 }
 .text {
