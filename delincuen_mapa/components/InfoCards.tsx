@@ -42,7 +42,7 @@ export default function InfoCards() {
         className={styles.bottom}
         initial="offScreen"
         whileInView="onScreen"
-        viewport={{ once: false, amount: 0.5 }}
+        viewport={{ once: true, amount: 0.5 }}
       >
         <Link href="/mapPage">
           <motion.div className={styles.left} variants={imageAnimate}>

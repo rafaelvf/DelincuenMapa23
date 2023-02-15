@@ -117,7 +117,7 @@ const FormSub = ({ coord }: any) => {
           </div>
         </div>
         <div className={styles.labelContainer}>
-          <label className={styles.title2}>Valor de la perdida</label>
+          <label className={styles.title2}>Valor de la pérdida</label>
           <div className={styles.sign}>
             <input
               name="valor"
