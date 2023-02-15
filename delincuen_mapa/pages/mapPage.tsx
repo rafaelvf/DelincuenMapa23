@@ -39,11 +39,12 @@ export default function mapPage() {
   const customers2 = useSelector((state: any) => state.user.robosOriginal);
   const despacho2 = useSelector((state: any) => state.user.despacho);
   console.log(customers2, "customers2");
+  console.log(despacho2, "despacho2");
 
   const dispatch = useDispatch();
   useEffect(() => {
     //setTimeout(() => {
-    if (!despacho2) {
+    if (despacho2.length === 0) {
       //@ts-ignore
       dispatch(updateCustomers());
       dispatch(despacho(true));
