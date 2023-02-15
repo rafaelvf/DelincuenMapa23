@@ -21,6 +21,9 @@
   z-index: 2;
   display: flex;
   justify-content: center;
+  @media (max-width: 700px) {
+    font-size: 28px;
+  }
 }
 .text {
   color: black;
@@ -30,12 +33,19 @@
   display: flex;
   justify-content: center;
   max-width: 700px;
+  @media (max-width: 700px) {
+    padding: 0 1rem;
+    text-align: center;
+  }
 }
 .bottom {
   display: flex;
   align-items: center;
   width: 100%;
   max-width: 700px;
+  @media (max-width: 700px) {
+    padding: 0 2rem;
+  }
 }
 
 .bullet {
@@ -45,6 +55,9 @@
 .textMap {
   font-size: 18px;
   margin-right: 18px;
+  @media (max-width: 700px) {
+    font-size: 16px;
+  }
 }
 .iconList {
   width: 25px;
