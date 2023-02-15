@@ -66,7 +66,7 @@ export default function Home() {
         </div>
         <InfoCards />
         <Future />
-        <div>hola</div>
+        <div style={{ color: "white" }}>hola</div>
       </main>
 
       <footer></footer>
