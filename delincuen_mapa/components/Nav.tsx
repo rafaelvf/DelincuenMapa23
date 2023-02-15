@@ -6,6 +6,7 @@ import styles from "../styles/Nav.module.scss";
 const dataCrimenes = ["5 Crimenes Registrados", "3 Muertes", "4 Desaparecidos"];
 
 const Nav = () => {
+  const [open, setOpen] = useState(false);
   const robos = useSelector((state: any) => state.user.robosOriginal);
   const crimenesRegistrados = robos.length;
   function filtrado(filtro: string) {
@@ -29,23 +30,53 @@ const Nav = () => {
         <img src="/logod.png" className={styles.logo} />
       </Link>
       <div className={styles.rightContainer}>
-        <div className={styles.banner}>
-          <div className={styles.bannerInside}>
-            <div className={styles.bannerText}>
-              {`${crimenesRegistrados} Crimenes registrados`}
-            </div>
-            <div className={styles.bannerText}>
-              {`${casas.length} Crimenes a casas`}
-            </div>
-            <div className={styles.bannerText}>
-              {`${caminaba.length} Crimenes a peatones`}
+        <Link href={"/mapPage"}>
+          <div className={styles.banner}>
+            <div className={styles.bannerInside}>
+              <div className={styles.bannerText}>
+                {`${crimenesRegistrados} Crimenes registrados`}
+              </div>
+              <div className={styles.bannerText}>
+                {`${casas.length} Crimenes a casas`}
+              </div>
+              <div className={styles.bannerText}>
+                {`${caminaba.length} Crimenes a peatones`}
+              </div>
             </div>
           </div>
-        </div>
+        </Link>
         <Link href={"/form"}>
           {" "}
-          <img src="/form2.svg" className={styles.formButton}></img>
+          <img src="/edit.svg" className={styles.formButton}></img>
         </Link>
+      </div>
+      {!open && (
+        <img
+          src="/open.svg"
+          className={styles.menu}
+          onClick={() => setOpen(!open)}
+        />
+      )}
+      <div
+        className={
+          open
+            ? `${styles.modalContainer} ${styles.modalContainerOpen}`
+            : styles.modalContainer
+        }
+      >
+        <img
+          src="/close2.svg"
+          className={styles.close}
+          onClick={() => setOpen(!open)}
+        />
+        <div className={styles.mobileContainer}>
+          <Link href={"/mapPage"} onClick={() => setOpen(!open)}>
+            <div className={styles.mobileLinks}>Mapa</div>
+          </Link>
+          <Link href={"/form"} onClick={() => setOpen(!open)}>
+            <div className={styles.mobileLinks}>Formulario de registro</div>
+          </Link>
+        </div>
       </div>
     </div>
   );

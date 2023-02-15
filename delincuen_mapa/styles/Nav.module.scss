@@ -20,6 +20,10 @@
   height: 50px;
   width: 280px;
   cursor: pointer;
+  @media (max-width: 700px) {
+    height: 35px;
+    width: 200px;
+  }
 }
 .rightContainer {
   display: flex;
@@ -89,4 +93,60 @@
   height: 30px;
   cursor: pointer;
   //margin-right: 10px;
+  @media (max-width: 700px) {
+    width: 25px;
+    height: 25px;
+    display: none;
+  }
+}
+.menu {
+  display: none;
+  @media (max-width: 700px) {
+    display: flex;
+    width: 35px;
+    height: 35px;
+  }
+}
+.modalContainer {
+  width: 100%;
+  height: 100vh;
+  background-color: #1f2026;
+  opacity: 0.99;
+  position: fixed;
+  display: flex;
+
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  z-index: 100000;
+  transform: translateX(100%);
+  transition: all 1s;
+  &Open {
+    transform: translateX(0);
+    transition: all 1s;
+  }
+}
+.close {
+  display: none;
+  @media (max-width: 700px) {
+    display: flex;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+  }
+}
+.mobileContainer {
+  display: flex;
+  justify-content: center;
+
+  flex-direction: column;
+  height: 30%;
+  gap: 1rem;
+}
+.mobileLinks {
+  color: white;
+  font-size: 20px;
+  margin-left: 2rem;
 }
