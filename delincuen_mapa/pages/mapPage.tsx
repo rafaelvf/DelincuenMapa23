@@ -40,6 +40,7 @@ export default function mapPage() {
   const despacho2 = useSelector((state: any) => state.user.despacho);
   console.log(customers2, "customers2");
   console.log(despacho2, "despacho2");
+  console.log(error, "error");
 
   const dispatch = useDispatch();
   useEffect(() => {

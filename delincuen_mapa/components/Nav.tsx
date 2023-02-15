@@ -27,7 +27,7 @@ const Nav = () => {
   return (
     <div className={styles.container}>
       <Link href={"/"}>
-        <img src="/logod.png" className={styles.logo} />
+        <img src="/nuevologo.png" className={styles.logo} />
       </Link>
       <div className={styles.rightContainer}>
         <Link href={"/mapPage"}>
