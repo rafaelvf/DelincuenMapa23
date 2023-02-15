@@ -30,7 +30,7 @@ export default function InfoCards() {
     <div className={styles.container}>
       <div className={styles.top}>
         <div className={styles.title}>
-          ¿Que vamos a encontrar?
+          ¿Qué vamos a encontrar?
           <img src="/lupa.svg" className={styles.lupa} />
         </div>
         <div className={styles.text}>
@@ -49,7 +49,7 @@ export default function InfoCards() {
             <div className={styles.overlay}></div>
             <img src="/map2White.svg" className={styles.imgMap} />
             <div className={styles.textMap}>
-              En la sección mapa encontraremos todos los crimenes registrados en
+              En la sección mapa encontraremos todos los crímenes registrados en
               nuestra base de datos. Donde podrás filtrar la información segun
               lo que quieras ver.
             </div>

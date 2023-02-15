@@ -13,8 +13,8 @@ export default function Future() {
         </div>
         <div className={styles.text}>
           Estamos trabajando en agregarle diferentes funcionalidades a la
-          pagina. Nuestra meta es que la informacion sea lo mas certera posible
-          y contar con la mayor cantidad de Data posible.
+          página. Nuestra meta es que la información sea lo mas certera posible
+          y contar con la mayor cantidad de datos posible.
         </div>
       </div>
 

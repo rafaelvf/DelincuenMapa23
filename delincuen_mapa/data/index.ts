@@ -18,15 +18,15 @@ export const categorias = [
 ];
 export const futuro = [
   {
-    desarrollo: "Pagina con estadisticas",
+    desarrollo: "Página con estadísticas",
     img: "/monitoring.svg",
   },
   {
-    desarrollo: "Pagina de contactos",
+    desarrollo: "Página de contactos",
     img: "/contacts.svg",
   },
   {
-    desarrollo: "Subscripcion para notificacion de robos",
+    desarrollo: "Suscripción para notificación de robos",
     img: "/notification.svg",
   },
   {

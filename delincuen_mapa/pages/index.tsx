@@ -27,13 +27,13 @@ export default function Home() {
               <div className={styles.optionsContainer}>
                 <Link href="/mapPage">
                   <div className={styles.crimeNear}>
-                    Mira los crimenes cerca
+                    Mira los crímenes cerca
                   </div>
                 </Link>
                 <div className={styles.o}>o</div>
                 <Link href="/form">
                   <div className={styles.registro}>
-                    Resgistra un crimen en el formulario
+                    Registra un crimen en el formulario
                   </div>
                 </Link>
               </div>
@@ -42,7 +42,7 @@ export default function Home() {
         </div>
         <div className={styles.misionContainer}>
           <div className={`${styles.title} ${styles.titleBlack}`}>
-            ¿Que es DelincuenMapa?
+            ¿Qué es DelincuenMapa?
           </div>
           <div className={styles.inconsContainer}>
             <img src="/pin.svg" className={styles.icon} />

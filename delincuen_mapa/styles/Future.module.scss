@@ -70,4 +70,13 @@
 .lupa {
   width: 38px;
   height: 38px;
+  animation-name: rueda;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+}
+@keyframes rueda {
+  to {
+    transform: rotate(360deg);
+  }
 }
