@@ -7,7 +7,10 @@ export default function Future() {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
-        <div className={styles.title}>Futuros desarrollos</div>
+        <div className={styles.title}>
+          Futuros desarrollos
+          <img src="/settings.svg" className={styles.lupa} />
+        </div>
         <div className={styles.text}>
           Estamos trabajando en agregarle diferentes funcionalidades a la
           pagina. Nuestra meta es que la informacion sea lo mas certera posible

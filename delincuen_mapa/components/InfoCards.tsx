@@ -29,7 +29,10 @@ export default function InfoCards() {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
-        <div className={styles.title}>¿Que vamos a encontrar?</div>
+        <div className={styles.title}>
+          ¿Que vamos a encontrar?
+          <img src="/lupa.svg" className={styles.lupa} />
+        </div>
         <div className={styles.text}>
           Actualmente contamos con dos secciones:
         </div>
