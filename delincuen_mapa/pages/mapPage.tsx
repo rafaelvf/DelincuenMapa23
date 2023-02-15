@@ -42,43 +42,19 @@ export default function mapPage() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    setTimeout(() => {
-      if (!despacho2) {
-        //@ts-ignore
-        dispatch(updateCustomers());
-        dispatch(despacho(true));
-      }
-    }, 2500);
+    //setTimeout(() => {
+    if (!despacho2) {
+      //@ts-ignore
+      dispatch(updateCustomers());
+      dispatch(despacho(true));
+    }
+    //}, 2500);
   }, []);
 
-  // useEffect(() => {
-  //   console.log("hola");
-  //   changeState();
-  // });
-  // function changeState() {
-  //   if (customers2.length != 0) {
-  //     setData(customers2);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     axios
-  //       .get("/api/customer")
-  //       .then((response) => {
-  //         setData(response.data);
-  //         setLoading(false);
-  //       })
-  //       .catch((error) => {
-  //         setError(error);
-  //         setLoading(false);
-  //       });
-  //   }, 5000);
-  // }, []);
-  console.log(data, "data");
-  console.log(loading, "loading");
-  console.log(error, "error");
-  console.log(despacho, "despacho");
+  const handleClick = (borrado: string) => {
+    // 👇️ take the parameter passed from the Child component
+    setTipo(borrado);
+  };
   function filtrado(filtro: string) {
     const customersFiltrados = [];
     for (let i = 0; i < customers2.length; i++) {
@@ -194,7 +170,7 @@ export default function mapPage() {
             <Map customers={customers2} />
           </div>
           <div className={styles.subSubContainer}>
-            <Board customers={customers2} />
+            <Board customers={customers2} handleClick={handleClick} />
           </div>
         </div>
       </main>

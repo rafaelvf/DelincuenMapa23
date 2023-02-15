@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { clearFilter } from "../redux/userSlice";
 
-export default function Board({ customers }: any) {
+export default function Board({ customers, handleClick }: any) {
   const customersFiltered = useSelector((state: any) => state.user.robos);
   //console.log(customersFiltered, "customersFiltered");
   const peopleArray = !customersFiltered ? customers : customersFiltered;
@@ -27,7 +27,7 @@ export default function Board({ customers }: any) {
       <div
         className={styles.borrarFiltros}
         onClick={() => {
-          dispatch(clearFilter());
+          dispatch(clearFilter()), handleClick("");
         }}
       >
         Borrar Filtros
