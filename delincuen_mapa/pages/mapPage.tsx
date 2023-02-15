@@ -44,11 +44,12 @@ export default function mapPage() {
   const dispatch = useDispatch();
   useEffect(() => {
     //setTimeout(() => {
-    //if (despacho2.length === 0) {
-    //@ts-ignore
-    dispatch(updateCustomers());
-    dispatch(despacho(true));
-    //}
+    if (customers2.length === 0) {
+      //@ts-ignore
+      dispatch(updateCustomers());
+      dispatch(despacho(true));
+      console.log("entre");
+    }
     //}, 2500);
   }, []);
 
