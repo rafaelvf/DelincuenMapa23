@@ -18,7 +18,7 @@ import {
   updateRobosOriginal,
 } from "../redux/userSlice";
 import { useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { updateCustomers } from "../redux/userSlice";
+//import { updateCustomers } from "../redux/userSlice";
 import { metodo, categorias } from "../data";
 // {
 //   customers,
