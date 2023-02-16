@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const updateCustomers = createAsyncThunk("updateCustomers", async () => {
-  const res = await axios.get("/api/customer");
-  return res.data;
-});
+// export const updateCustomers = createAsyncThunk("updateCustomers", async () => {
+//   const res = await axios.get("/api/customer");
+//   return res.data;
+// });
 
 export const userSlice = createSlice({
   name: "user",
