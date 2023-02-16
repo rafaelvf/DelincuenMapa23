@@ -4,7 +4,7 @@ import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import { Icon } from "leaflet";
 import { useDispatch, useSelector } from "react-redux";
 import { filterId } from "../redux/userSlice";
-const Markers = ({ customers }: any) => {
+const Markers = ({ customers, handleClickMarker }: any) => {
   console.log(customers, "robos");
   const dispatch = useDispatch();
   const markers =
@@ -14,7 +14,9 @@ const Markers = ({ customers }: any) => {
             key={i}
             position={place.coordenadas}
             eventHandlers={{
-              click: () => dispatch(filterId(place._id)),
+              click: () => {
+                dispatch(filterId(place._id)), handleClickMarker("Marker");
+              },
             }}
           >
             {/* <Popup>

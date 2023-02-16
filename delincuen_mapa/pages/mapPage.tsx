@@ -76,6 +76,10 @@ export default function mapPage() {
     // 👇️ take the parameter passed from the Child component
     setTipo(borrado);
   };
+  const handleClickMarker = (filterMarker: string) => {
+    // 👇️ take the parameter passed from the Child component
+    setTipo(filterMarker);
+  };
   function filtrado(filtro: string) {
     const customersFiltrados = [];
     for (let i = 0; i < customers2.length; i++) {
@@ -92,6 +96,7 @@ export default function mapPage() {
   useEffect(() => {
     dispatch(updateRobos(customersFiltrados));
   }, [customersFiltrados]);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -188,7 +193,7 @@ export default function mapPage() {
         </div>
         <div className={styles.subContainer}>
           <div className={styles.subSubContainer}>
-            <Map customers={customers2} />
+            <Map customers={customers2} handleClickMarker={handleClickMarker} />
           </div>
           <div className={styles.subSubContainer}>
             {!customers2 || customers2.length === 0 ? (
