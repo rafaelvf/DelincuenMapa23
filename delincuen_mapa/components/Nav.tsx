@@ -8,7 +8,8 @@ const dataCrimenes = ["5 Crimenes Registrados", "3 Muertes", "4 Desaparecidos"];
 const Nav = () => {
   const [open, setOpen] = useState(false);
   const robos = useSelector((state: any) => state.user.robosOriginal);
-  const crimenesRegistrados = robos.length;
+  const crimenesRegistrados = robos && robos.length;
+
   function filtrado(filtro: string) {
     const customersFiltrados = [];
     for (let i = 0; i < robos.length; i++) {
@@ -21,8 +22,8 @@ const Nav = () => {
 
     return customersFiltrados;
   }
-  const casas = filtrado("Robo a casas habitación");
-  const caminaba = filtrado("Asalto a transeúntes");
+  const casas = robos && filtrado("Robo a casas habitación");
+  const caminaba = robos && filtrado("Asalto a transeúntes");
 
   return (
     <div className={styles.container}>
@@ -33,15 +34,27 @@ const Nav = () => {
         <Link href={"/mapPage"}>
           <div className={styles.banner}>
             <div className={styles.bannerInside}>
-              <div className={styles.bannerText}>
-                {`${crimenesRegistrados} Crímenes registrados`}
-              </div>
-              <div className={styles.bannerText}>
-                {`${casas.length} Crímenes a casas`}
-              </div>
-              <div className={styles.bannerText}>
-                {`${caminaba.length} Crímenes a peatones`}
-              </div>
+              {robos ? (
+                <div className={styles.bannerText}>
+                  {`${crimenesRegistrados} Crímenes registrados`}
+                </div>
+              ) : (
+                <div>loading</div>
+              )}
+              {casas ? (
+                <div className={styles.bannerText}>
+                  {`${casas.length} Crímenes a casas`}
+                </div>
+              ) : (
+                <div>loading</div>
+              )}
+              {casas ? (
+                <div className={styles.bannerText}>
+                  {`${caminaba.length} Crímenes a peatones`}
+                </div>
+              ) : (
+                <div>loading</div>
+              )}
             </div>
           </div>
         </Link>

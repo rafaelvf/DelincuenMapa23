@@ -14,12 +14,12 @@ import {
   filterArticulos,
   filterDay,
   despacho,
+  updateRobosOriginal,
 } from "../redux/userSlice";
 import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 
 import { updateCustomers } from "../redux/userSlice";
 import { metodo, categorias } from "../data";
-
 // {
 //   customers,
 // }: InferGetServerSidePropsType<typeof getServerSideProps>
@@ -28,7 +28,17 @@ export default function mapPage() {
     () => import("../components/Map"), // replace '@components/map' with your component's location
     { ssr: false } // This line is important. It's what prevents server-side render
   );
-
+  const callAPI = async () => {
+    try {
+      const res = await fetch(`/api/customer`);
+      const data = await res.json();
+      console.log(data, "adentro de la promesa");
+      setApiInfo(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const [apiInfo, setApiInfo] = useState();
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -36,23 +46,29 @@ export default function mapPage() {
   const [subTipo, setSubTipo] = useState("");
   const [customersFiltrados, setCustomersFiltrados] = useState();
 
+  useEffect(() => {
+    callAPI();
+  }, []);
+
+  console.log(apiInfo, "customersPorfa");
   const customers2 = useSelector((state: any) => state.user.robosOriginal);
   const despacho2 = useSelector((state: any) => state.user.despacho);
   console.log(customers2, "customers2");
-  console.log(despacho2, "despacho2");
-  console.log(error, "error");
 
   const dispatch = useDispatch();
   useEffect(() => {
-    //setTimeout(() => {
-    if (customers2.length === 0) {
-      //@ts-ignore
-      dispatch(updateCustomers());
-      dispatch(despacho(true));
-      console.log("entre");
-    }
-    //}, 2500);
-  }, []);
+    dispatch(updateRobosOriginal(apiInfo));
+  }, [apiInfo]);
+  // useEffect(() => {
+  //   //setTimeout(() => {
+  //   if (customers2.length === 0) {
+  //     //@ts-ignore
+  //     dispatch(updateCustomers());
+  //     dispatch(despacho(true));
+  //     console.log("entre");
+  //   }
+  //   //}, 2500);
+  // }, []);
 
   const handleClick = (borrado: string) => {
     // 👇️ take the parameter passed from the Child component
@@ -173,7 +189,7 @@ export default function mapPage() {
             <Map customers={customers2} />
           </div>
           <div className={styles.subSubContainer}>
-            {customers2.length === 0 ? (
+            {!customers2 ? (
               <div>loading</div>
             ) : (
               <Board customers={customers2} handleClick={handleClick} />
@@ -188,7 +204,7 @@ export default function mapPage() {
 }
 
 // export async function getServerSideProps() {
-//   const res = await axios.get("http://localhost:3000/api/customer");
+//   const res = await axios.get("api/customer");
 //   return {
 //     props: {
 //       customers: res.data,
