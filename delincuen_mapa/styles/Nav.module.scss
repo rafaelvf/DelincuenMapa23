@@ -154,3 +154,15 @@
   font-size: 20px;
   margin-left: 2rem;
 }
+.loading {
+  font-family: "Inconsolata";
+  font-weight: 700;
+  color: red;
+  position: relative;
+  width: 33.33333333%;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}

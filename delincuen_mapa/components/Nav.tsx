@@ -39,21 +39,21 @@ const Nav = () => {
                   {`${crimenesRegistrados} Crímenes registrados`}
                 </div>
               ) : (
-                <div>loading</div>
+                <div className={styles.loading}>loading</div>
               )}
               {casas ? (
                 <div className={styles.bannerText}>
                   {`${casas.length} Crímenes a casas`}
                 </div>
               ) : (
-                <div>loading</div>
+                <div className={styles.loading}>loading</div>
               )}
               {casas ? (
                 <div className={styles.bannerText}>
                   {`${caminaba.length} Crímenes a peatones`}
                 </div>
               ) : (
-                <div>loading</div>
+                <div className={styles.loading}>loading</div>
               )}
             </div>
           </div>

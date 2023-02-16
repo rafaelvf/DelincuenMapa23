@@ -5,6 +5,7 @@ import Nav from "../components/Nav";
 import Map from "../components/Map";
 import dynamic from "next/dynamic";
 import styles from "../styles/MapPage.module.scss";
+import Loader from "../components/Loader";
 import Board from "../components/Board";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -199,7 +200,9 @@ export default function mapPage() {
             {!customers2 ||
             customers2.length === 0 ||
             Object.keys(customers2).length === 0 ? (
-              <div>loading</div>
+              <div className={styles.loading}>
+                <Loader />
+              </div>
             ) : (
               <Board customers={customers2} handleClick={handleClick} />
             )}

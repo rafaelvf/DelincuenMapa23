@@ -49,7 +49,7 @@ export default function Board({ customers, handleClick }: any) {
           </div>
         </div>
       ) : (
-        <div>loading</div>
+        <div className={styles.loading}>loading...</div>
       )}
     </>
   );
