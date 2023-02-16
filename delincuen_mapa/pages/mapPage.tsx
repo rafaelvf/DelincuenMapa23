@@ -17,17 +17,18 @@ import {
   updateRobosOriginal,
 } from "../redux/userSlice";
 import { useEffect, useLayoutEffect, useMemo, useState } from "react";
-
 import { updateCustomers } from "../redux/userSlice";
 import { metodo, categorias } from "../data";
 // {
 //   customers,
 // }: InferGetServerSidePropsType<typeof getServerSideProps>
+
 export default function mapPage() {
   const Map = dynamic(
     () => import("../components/Map"), // replace '@components/map' with your component's location
     { ssr: false } // This line is important. It's what prevents server-side render
   );
+
   const callAPI = async () => {
     try {
       const res = await fetch(`/api/customer`);
@@ -38,6 +39,7 @@ export default function mapPage() {
       console.log(err);
     }
   };
+
   const [apiInfo, setApiInfo] = useState();
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
