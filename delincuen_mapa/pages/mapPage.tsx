@@ -196,7 +196,9 @@ export default function mapPage() {
             <Map customers={customers2} handleClickMarker={handleClickMarker} />
           </div>
           <div className={styles.subSubContainer}>
-            {!customers2 || customers2.length === 0 ? (
+            {!customers2 ||
+            customers2.length === 0 ||
+            Object.keys(customers2).length === 0 ? (
               <div>loading</div>
             ) : (
               <Board customers={customers2} handleClick={handleClick} />
