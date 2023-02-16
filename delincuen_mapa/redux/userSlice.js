@@ -85,21 +85,21 @@ export const userSlice = createSlice({
       state.robos = state.robosOriginal;
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(updateCustomers.pending, (state) => {
-      state.loading = true;
-    });
-    builder.addCase(updateCustomers.fulfilled, (state, action) => {
-      state.loading = false;
-      state.robosOriginal = action.payload;
-      state.error = "";
-    });
-    builder.addCase(updateCustomers.rejected, (state, action) => {
-      state.loading = false;
-      state.robosOriginal = [];
-      state.error = action.error.message;
-    });
-  },
+  // extraReducers: (builder) => {
+  //   builder.addCase(updateCustomers.pending, (state) => {
+  //     state.loading = true;
+  //   });
+  //   builder.addCase(updateCustomers.fulfilled, (state, action) => {
+  //     state.loading = false;
+  //     state.robosOriginal = action.payload;
+  //     state.error = "";
+  //   });
+  //   builder.addCase(updateCustomers.rejected, (state, action) => {
+  //     state.loading = false;
+  //     state.robosOriginal = [];
+  //     state.error = action.error.message;
+  //   });
+  // },
 });
 
 export const {

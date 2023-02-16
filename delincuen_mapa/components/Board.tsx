@@ -5,9 +5,11 @@ import { useEffect, useState } from "react";
 import { clearFilter } from "../redux/userSlice";
 
 export default function Board({ customers, handleClick }: any) {
+  const arrayAmague: [] = customers || [];
   const customersFiltered = useSelector((state: any) => state.user.robos);
-  //console.log(customersFiltered, "customersFiltered");
-  const peopleArray = !customersFiltered ? customers : customersFiltered;
+  console.log(customersFiltered, "customersFiltered2");
+  console.log(customers, "customersFiltered23");
+  const peopleArray = !customersFiltered ? arrayAmague : customersFiltered;
   const dispatch = useDispatch();
   return (
     <div className={styles.container}>

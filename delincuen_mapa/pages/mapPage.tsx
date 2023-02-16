@@ -194,7 +194,7 @@ export default function mapPage() {
             {!customers2 ? (
               <div>loading</div>
             ) : (
-              <Board customers={customers2} handleClick={handleClick} />
+              <Board customers={apiInfo} handleClick={handleClick} />
             )}
           </div>
         </div>
