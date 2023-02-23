@@ -4,8 +4,34 @@ import styles from "../styles/Home.module.scss";
 import Link from "next/link";
 import InfoCards from "../components/InfoCards";
 import Future from "../components/Future";
+import { useEffect, useState } from "react";
 const text = "Porque DelincuenMapa?";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { updateRobosOriginal } from "../redux/userSlice";
+import { InferGetServerSidePropsType } from "next";
+
 export default function Home() {
+  const [apiInfo, setApiInfo] = useState(null);
+
+  const callAPI = async () => {
+    try {
+      const res = await fetch(`/api/customer`);
+      const data = await res.json();
+      setApiInfo(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    callAPI();
+  }, []);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(updateRobosOriginal(apiInfo));
+  }, [apiInfo]);
+
   return (
     <div className={styles.container}>
       <Head>
