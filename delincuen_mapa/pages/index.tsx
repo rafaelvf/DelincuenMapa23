@@ -11,27 +11,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateRobosOriginal } from "../redux/userSlice";
 import { InferGetServerSidePropsType } from "next";
 
-// export async function getCustomers() {
-//   const res = await fetch("/api/customer");
-//   const data = await res.json();
-//   return data;
-// }
-
 export default function Home() {
-  //let customers = getCustomers();
-
   const [apiInfo, setApiInfo] = useState(null);
-  // useEffect(() => {
-  //   axios
-  //     .get(`/api/customer`)
-  //     .then((response) => {
-  //       setApiInfo(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  //   console.log("entro timeout1");
-  // }, []);
+
   const callAPI = async () => {
     try {
       const res = await fetch(`/api/customer`);
@@ -44,26 +26,12 @@ export default function Home() {
   useEffect(() => {
     callAPI();
   }, []);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     axios
-  //       .get(`/api/customer`)
-  //       .then((response) => {
-  //         setApiInfo(response.data);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //     console.log("entro timeout2");
-  //     callAPI();
-  //   }, 3500);
-  // }, []);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(updateRobosOriginal(apiInfo));
   }, [apiInfo]);
-  console.log(apiInfo, "apiInfoIndex");
-  //console.log(customers, "customersIndex");
+
   return (
     <div className={styles.container}>
       <Head>

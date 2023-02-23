@@ -30,42 +30,15 @@ export default function mapPage() {
     { ssr: false } // This line is important. It's what prevents server-side render
   );
 
-  // const callAPI = async () => {
-  //   try {
-  //     const res = await fetch(`/api/customer`);
-  //     const data = await res.json();
-  //     console.log(data, "adentro de la promesa");
-  //     setApiInfo(data);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
   const [apiInfo, setApiInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
-  //const [error, setError] = useState(null);
+
   const [loading, setLoading] = useState(true);
   const [tipo, setTipo] = useState("");
   const [subTipo, setSubTipo] = useState("");
   const [customersFiltrados, setCustomersFiltrados] = useState();
-
-  // useEffect(() => {
-  //   const callAPI = async () => {
-  //     try {
-  //       const res = await fetch(`/api/customer`);
-  //       const data = await res.json();
-  //       if (data.length > 0) {
-  //         console.log(data, "adentro de la promesa");
-  //         setApiInfo(data);
-  //       }
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   callAPI();
-  // }, [apiInfo]);
 
   function fetchData(url: string, retries = 3, delay = 1000, onData: any) {
     return new Promise(async (resolve, reject) => {
@@ -93,46 +66,14 @@ export default function mapPage() {
   useEffect(() => {
     fetchData(`/api/customer`, 3, 1000, setApiInfo);
   }, []);
-  // useEffect(() => {
-  //   fetch("/api/customer")
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         console.log(response, "eror");
-  //         throw new Error("Network response was not ok");
-  //       }
-  //       console.log("quiero llorar");
-  //       return response.json();
-  //     })
-  //     .catch((error) => setError(error))
-  //     .then((data) => {
-  //       if (data) {
-  //         console.log("no error");
-  //         setApiInfo(data);
-  //         setIsLoading(false);
-  //       }
-  //     });
-  // }, []);
-  console.log(error, "error");
-  console.log(isLoading, "isLoading");
-  console.log(apiInfo, "APIINFOOOO");
+
   const customers2 = useSelector((state: any) => state.user.robosOriginal);
   const despacho2 = useSelector((state: any) => state.user.despacho);
-  console.log(customers2, "customers2");
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(updateRobosOriginal(apiInfo));
   }, [apiInfo]);
-  // useEffect(() => {
-  //   //setTimeout(() => {
-  //   if (customers2.length === 0) {
-  //     //@ts-ignore
-  //     dispatch(updateCustomers());
-  //     dispatch(despacho(true));
-  //     console.log("entre");
-  //   }
-  //   //}, 2500);
-  // }, []);
 
   const handleClick = (borrado: string) => {
     // 👇️ take the parameter passed from the Child component
