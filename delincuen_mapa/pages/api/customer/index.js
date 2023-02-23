@@ -4,13 +4,15 @@ import Customers from "../../../models/Customers";
 export default async function handler(req, res) {
   const { method } = req;
   console.log(req.body);
-  dbConnect();
+  await dbConnect();
+  //dbConnect();
 
   if (method === "GET") {
     try {
       const cus = await Customers.find();
       res.status(200).json(cus);
     } catch (err) {
+      console.log(err);
       res.status(500).json(err);
     }
   }

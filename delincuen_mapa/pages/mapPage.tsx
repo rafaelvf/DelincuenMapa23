@@ -30,30 +30,91 @@ export default function mapPage() {
     { ssr: false } // This line is important. It's what prevents server-side render
   );
 
-  const callAPI = async () => {
-    try {
-      const res = await fetch(`/api/customer`);
-      const data = await res.json();
-      console.log(data, "adentro de la promesa");
-      setApiInfo(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const callAPI = async () => {
+  //   try {
+  //     const res = await fetch(`/api/customer`);
+  //     const data = await res.json();
+  //     console.log(data, "adentro de la promesa");
+  //     setApiInfo(data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  const [apiInfo, setApiInfo] = useState();
-  const [data, setData] = useState(null);
+  const [apiInfo, setApiInfo] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
+  //const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [tipo, setTipo] = useState("");
   const [subTipo, setSubTipo] = useState("");
   const [customersFiltrados, setCustomersFiltrados] = useState();
 
-  useEffect(() => {
-    callAPI();
-  }, []);
+  // useEffect(() => {
+  //   const callAPI = async () => {
+  //     try {
+  //       const res = await fetch(`/api/customer`);
+  //       const data = await res.json();
+  //       if (data.length > 0) {
+  //         console.log(data, "adentro de la promesa");
+  //         setApiInfo(data);
+  //       }
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   callAPI();
+  // }, [apiInfo]);
 
-  console.log(apiInfo, "customersPorfa");
+  function fetchData(url: string, retries = 3, delay = 1000, onData: any) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        // Call the onData callback function with the fetched data
+        onData(data);
+        resolve(data);
+      } catch (error: any) {
+        console.error(`Error fetching data: ${error.message}`);
+        if (retries > 0) {
+          console.log(`Retrying in ${delay / 1000} seconds...`);
+          setTimeout(async () => {
+            const data = await fetchData(url, retries - 1, delay, onData);
+            resolve(data);
+          }, delay);
+        } else {
+          reject(error);
+        }
+      }
+    });
+  }
+
+  useEffect(() => {
+    fetchData(`/api/customer`, 3, 1000, setApiInfo);
+  }, []);
+  // useEffect(() => {
+  //   fetch("/api/customer")
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         console.log(response, "eror");
+  //         throw new Error("Network response was not ok");
+  //       }
+  //       console.log("quiero llorar");
+  //       return response.json();
+  //     })
+  //     .catch((error) => setError(error))
+  //     .then((data) => {
+  //       if (data) {
+  //         console.log("no error");
+  //         setApiInfo(data);
+  //         setIsLoading(false);
+  //       }
+  //     });
+  // }, []);
+  console.log(error, "error");
+  console.log(isLoading, "isLoading");
+  console.log(apiInfo, "APIINFOOOO");
   const customers2 = useSelector((state: any) => state.user.robosOriginal);
   const despacho2 = useSelector((state: any) => state.user.despacho);
   console.log(customers2, "customers2");
