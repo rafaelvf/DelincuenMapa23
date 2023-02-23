@@ -5,7 +5,7 @@ import { Icon } from "leaflet";
 import { useDispatch, useSelector } from "react-redux";
 import { filterId } from "../redux/userSlice";
 const Markers = ({ customers, handleClickMarker }: any) => {
-  console.log(customers, "robos");
+  //console.log(customers, "robos");
   const dispatch = useDispatch();
   const markers =
     customers && customers.length

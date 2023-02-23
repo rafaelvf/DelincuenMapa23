@@ -3,7 +3,7 @@ import Customers from "../../../models/Customers";
 
 export default async function handler(req, res) {
   const { method } = req;
-  console.log(req.body);
+  //console.log(req.body);
   await dbConnect();
   //dbConnect();
 
@@ -12,7 +12,7 @@ export default async function handler(req, res) {
       const cus = await Customers.find();
       res.status(200).json(cus);
     } catch (err) {
-      console.log(err);
+      //console.log(err);
       res.status(500).json(err);
     }
   }
@@ -23,7 +23,7 @@ export default async function handler(req, res) {
       await cust.save();
       res.json({ message: "Nuevo cliente agregado!" });
     } catch (error) {
-      console.log(error);
+      //.log(error);
       res.send(error);
     }
   }

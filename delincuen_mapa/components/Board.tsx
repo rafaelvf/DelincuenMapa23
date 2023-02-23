@@ -19,9 +19,7 @@ export default function Board({ customers, handleClick }: any) {
 
   //const peopleArray = !customersFiltered ? customers : customersFiltered;
   const dispatch = useDispatch();
-  console.log(customersFiltered, "customersFiltered2");
-  console.log(customers, "customersFiltered23BOARD");
-  console.log(peopleArray, "peopleArray");
+
   return (
     <>
       {peopleArray ? (

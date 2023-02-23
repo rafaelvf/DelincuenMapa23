@@ -32,7 +32,7 @@ const FormSub = ({ coord }: any) => {
     tipo: formik.values.tipo,
     descripcion: formik.values.descripcion,
   };
-  console.log(post, "post");
+
   const notify = () => toast("Se ha creado correctamente!!");
   const nofifyError = () =>
     toast.error("Por favor selccionar en el mapa", {
@@ -41,14 +41,13 @@ const FormSub = ({ coord }: any) => {
   async function handleSubmit() {
     //i.preventDefault();
     if (coord.lat === 1 && coord.lng === 1) {
-      console.log("vali v");
       //alert("Por favor selccionar en el mapa");
       nofifyError();
     } else {
       let res = await axios.post(`/api/customer`, post);
       //alert("Se ha creado correctamente!");
       notify();
-      console.log(res.data);
+      //console.log(res.data);
     }
   }
 

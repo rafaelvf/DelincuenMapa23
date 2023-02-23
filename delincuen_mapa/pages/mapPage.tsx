@@ -51,7 +51,7 @@ export default function mapPage() {
       } catch (error: any) {
         console.error(`Error fetching data: ${error.message}`);
         if (retries > 0) {
-          console.log(`Retrying in ${delay / 1000} seconds...`);
+          //console.log(`Retrying in ${delay / 1000} seconds...`);
           setTimeout(async () => {
             const data = await fetchData(url, retries - 1, delay, onData);
             resolve(data);
