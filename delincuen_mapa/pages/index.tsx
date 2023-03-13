@@ -79,8 +79,8 @@ export default function Home() {
             <span className={styles.underline}>Delincuenmapa </span> es una
             plataforma que ayuda combatir la delincuencia, siendo un espacio
             para que el público pueda registrar a detalle si han vivido algún
-            crimen, y a su vez tener puedan identificar las zonas más peligrosas
-            del país según la experiencia de otros usuarios.
+            crimen, y a su vez también puedan identificar las zonas más
+            peligrosas del país según la experiencia de otros usuarios.
             <br />
             <div className={styles.space}></div> Combinando la tecnología, y la
             unión de la gente podemos plasmar los actos de delincuencia que se
